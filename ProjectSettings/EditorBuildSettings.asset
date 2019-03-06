@@ -6,6 +6,33 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Main Menu.unity
+    guid: 361d99c94eb577a4a8fee59ece450f77
+  - enabled: 1
+    path: Assets/Scenes/Antonyms.unity
+    guid: fedee0d20f77908459c37f49c8864242
+  - enabled: 1
+    path: Assets/Scenes/DidTheShapeChangeGame.unity
+    guid: c1e9875c9869bc642a11b3336f2b674e
+  - enabled: 1
+    path: Assets/Scenes/DoXEqualYGame.unity
+    guid: 8c4888b5298a5e24ea8dc1b5f70cc027
+  - enabled: 1
+    path: Assets/Scenes/Hit The Lights Game.unity
+    guid: f2964667422ce774fa49e3b79e70c604
+  - enabled: 1
+    path: Assets/Scenes/PickTheCardsWithPictures.unity
+    guid: cc6d17e72c924a5489ff943feccc5939
+  - enabled: 1
+    path: Assets/Scenes/PongWhileMatchingWordWithImage.unity
+    guid: 0b2275822f6e46c49b842c75d6b48312
+  - enabled: 1
+    path: Assets/Scenes/ShapeAndWordMatchGame.unity
+    guid: b43bb36f03da11e43985ce633c742779
+  - enabled: 1
+    path: Assets/Scenes/Synonyms.unity
+    guid: 7f3d9d967ed4eb948ac1c0b79afe3789
+  - enabled: 1
+    path: Assets/Scenes/WhatDoesTheWordMean.unity
+    guid: 1d4fa63e830d1874ca272b3293eb52b4
   m_configObjects: {}
