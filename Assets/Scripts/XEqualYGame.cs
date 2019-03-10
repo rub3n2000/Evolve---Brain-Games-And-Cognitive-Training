@@ -47,7 +47,7 @@ public class XEqualYGame : MonoBehaviour
         if (statementIsTrue)
         {
             times.Add(timeToAnswer);
-            int roundScore = (int)(1000 - (timeToAnswer * 10));
+            int roundScore = (int)(500 - (timeToAnswer * 10));
             scores.Add(roundScore);
             currentScore += roundScore;
             if(currentQuestion >= questionsTillDone)
@@ -85,7 +85,7 @@ public class XEqualYGame : MonoBehaviour
         if (!statementIsTrue)
         {
             times.Add(timeToAnswer);
-            int roundScore = (int)(1000 - (timeToAnswer * 10));
+            int roundScore = (int)(500 - (timeToAnswer * 10));
             scores.Add(roundScore);
             currentScore += roundScore;
             if (currentQuestion >= questionsTillDone)
@@ -141,17 +141,18 @@ public class XEqualYGame : MonoBehaviour
         next.SetActive(true);
         for(int i = 0; i < times.Count; i++)
         {
-            endText.GetComponent<Text>().text += "Round " + (i + 1).ToString() + " Score : ";
+            endText.GetComponent<Text>().text += "Round " + (i + 1).ToString() + " : ";
             if(scores[i] == -100)
             {
-                endText.GetComponent<Text>().text += "-100" + "\n" + " Time : " + times[i].ToString() + "\n";
+                endText.GetComponent<Text>().text += "Wrong answer | " + " Time : " + times[i].ToString("0.00") + "\n";
             }
             else
             {
-                endText.GetComponent<Text>().text += "1000 -  (Time Used To Answer * 10)" + "\n" + " Time : " + times[i].ToString() + "\n";
+                endText.GetComponent<Text>().text += "Correct answer | " + "Time : " + times[i].ToString("0.00") + "\n";
             }
         }
-        endText.GetComponent<Text>().text += "Great Job, keep trying to improve times and scores!";
+
+        endText.GetComponent<Text>().text += "\n Great Job, keep trying to \n improve times and scores!";
     }
 
     void CreateStatement()
@@ -206,7 +207,7 @@ public class XEqualYGame : MonoBehaviour
                 else
                 {
                     modifierString2 = "-";
-                    correctAnswer = (a - b) + c;
+                    correctAnswer2 = (a - b) + c;
                 }
                 int trueOrFalse2 = Random.Range(0, 2);
                 if (trueOrFalse2 == 0)
@@ -223,22 +224,22 @@ public class XEqualYGame : MonoBehaviour
                 yText.text = d.ToString();
                 break;
             case 2:
-                int a2 = Random.Range(1, 101);
-                int b2 = Random.Range(1, 101);
-                int modifier3 = Random.Range(0, 101);
+                int a2 = Random.Range(1, 11);
+                int b2 = Random.Range(1, 11);
+                int modifier3 = Random.Range(0, 2);
                 string modifierString3 = "";
                 int correctAnswer3 = 0;
-                int c2 = Random.Range(1, 101);
+                int c2 = Random.Range(1, 11);
                 int d2 = 0;
                 if (modifier3 == 0)
                 {
-                    modifierString = "+";
-                    correctAnswer2 = (a2 + b2) + c2;
+                    modifierString3 = "+";
+                    correctAnswer3 = (a2 + b2) + c2;
                 }
                 else
                 {
-                    modifierString = "-";
-                    correctAnswer = (a2 - b2) + c2;
+                    modifierString3 = "-";
+                    correctAnswer3 = (a2 - b2) + c2;
                 }
                 int trueOrFalse3 = Random.Range(0, 2);
                 if (trueOrFalse3 == 0)
@@ -255,8 +256,8 @@ public class XEqualYGame : MonoBehaviour
                 yText.text = d2.ToString();
                 break;
             case 3:
-                int x3 = Random.Range(1, 101);
-                int y3 = Random.Range(1, 101);
+                float x3 = Random.Range(1, 11);
+                float y3 = Random.Range(1, 11);
                 int modifier4 = Random.Range(0, 2);
                 string modifierString4 = "";
                 float correctAnswer4 = 0;
@@ -279,20 +280,20 @@ public class XEqualYGame : MonoBehaviour
                 }
                 else
                 {
-                    z3 = correctAnswer4 + Random.Range(-10, 10);
+                    z3 = correctAnswer4 + Random.Range(-5, 5);
                     statementIsTrue = false;
                 }
                 xText.text = x3.ToString() + " " + modifierString4 + " " + y3.ToString();
                 yText.text = z3.ToString();
                 break;
             case 4:
-                int x4 = Random.Range(1, 101);
-                int y4 = Random.Range(1, 101);
+                float x4 = Random.Range(1, 11);
+                float y4 = Random.Range(1, 11);
                 int modifier5 = Random.Range(0, 2);
                 string modifierString5 = "";
                 float correctAnswer5 = 0;
                 float z4 = 0;
-                int n4 = Random.Range(1, 101);
+                float n4 = Random.Range(1, 11);
                 if (modifier5 == 0)
                 {
                     modifierString5 = "*";
@@ -311,20 +312,20 @@ public class XEqualYGame : MonoBehaviour
                 }
                 else
                 {
-                    z4 = correctAnswer5 + Random.Range(-100, 100);
+                    z4 = correctAnswer5 + Random.Range(-5, 5);
                     statementIsTrue = false;
                 }
                 xText.text = "(" + x4.ToString() + " " + modifierString5 + " " + y4.ToString() + ")" + " * " + n4;
                 yText.text = z4.ToString();
                 break;
             default:
-            int x5 = Random.Range(1, 101);
-            int y5 = Random.Range(1, 101);
+            float x5 = Random.Range(1, 11);
+            float y5 = Random.Range(1, 11);
             int modifier6 = Random.Range(0, 2);
             string modifierString6 = "";
             float correctAnswer6 = 0;
             float z5 = 0;
-            int n5 = Random.Range(1, 101);
+            float n5 = Random.Range(1, 11);
             if (modifier6 == 0)
             {
                 modifierString6 = "*";
@@ -343,7 +344,7 @@ public class XEqualYGame : MonoBehaviour
             }
             else
             {
-                z5 = correctAnswer6 + Random.Range(-100, 100);
+                z5 = correctAnswer6 + Random.Range(-5, 5);
                 statementIsTrue = false;
             }
             int numberForDividing = Random.Range(0,2);

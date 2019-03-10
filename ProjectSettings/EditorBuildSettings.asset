@@ -35,4 +35,55 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WhatDoesTheWordMean.unity
     guid: 1d4fa63e830d1874ca272b3293eb52b4
+  - enabled: 1
+    path: Assets/Scenes/PressTheLeafs.unity
+    guid: f67312c58f8439b4691d410f5e6e4453
+  - enabled: 1
+    path: Assets/Scenes/FindTheFlowerAmongTheLeaves.unity
+    guid: 685b056b93a14074c8e9de7ab266900f
+  - enabled: 1
+    path: Assets/Scenes/LeavesFlowersAndBranchesHowManyWereThere.unity
+    guid: 79d3a72e7066a034aa6f603843771ea7
+  - enabled: 1
+    path: Assets/Scenes/WhatWasTheNthLetterInTheSentence.unity
+    guid: c43090a507426e94eb5045e0e8c36c9e
+  - enabled: 1
+    path: Assets/Scenes/WhatIsTheSquareRoot.unity
+    guid: 3e32197898c76394ebc9933d2fcfbe0e
+  - enabled: 1
+    path: Assets/Scenes/PressLightWhenGreen.unity
+    guid: ac8e771005da6144eb7e1d1e5e52d9a7
+  - enabled: 1
+    path: Assets/Scenes/PlayBlockBreakerAndHangman.unity
+    guid: 316f80600148d42449c1873b7990698a
+  - enabled: 1
+    path: Assets/Scenes/AstroidsAndHangman.unity
+    guid: 75f5205f6eac68c4f923671ae0f85763
+  - enabled: 1
+    path: Assets/Scenes/BerryCatchingAndMath.unity
+    guid: e8899026de990bc4bba2fa37525e751c
+  - enabled: 1
+    path: Assets/Scenes/WhatLanguageIsThisWord.unity
+    guid: a81969b724f905c44941382dfd6f60c9
+  - enabled: 1
+    path: Assets/Scenes/HowManySyllablesInThisWord.unity
+    guid: 5ef05a46180d4384a83d80d720ac7ed4
+  - enabled: 1
+    path: Assets/Scenes/FindTheSpellingError.unity
+    guid: c82756ffbb753ad4cbc4f0ebf2e4ac32
+  - enabled: 1
+    path: Assets/Scenes/SuddenShapeFlash.unity
+    guid: bcb7ae730fe43754985a99961748fb3a
+  - enabled: 1
+    path: Assets/Scenes/WhatFiveNumbersWereShown.unity
+    guid: bee4e895448462042ad0ee40ca451a30
+  - enabled: 1
+    path: Assets/Scenes/ShortStory.unity
+    guid: 9cecb3cec16bde04c9c160fdab88b5ec
+  - enabled: 1
+    path: Assets/Scenes/MissingNumberInNumberRow.unity
+    guid: d1587d5a0c98ea2438cd96e6af7dbf53
+  - enabled: 1
+    path: Assets/Scenes/WhatDoesNotBelong.unity
+    guid: 968813f7efcbde74596dd732f061fc4f
   m_configObjects: {}

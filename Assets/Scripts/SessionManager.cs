@@ -49,17 +49,24 @@ public class SessionManager : MonoBehaviour
         sessionManager.currentSession.Add(languageGamesBuildIndexes[Random.Range(0, languageGamesBuildIndexes.Length)]);
         sessionManager.currentSession.Add(multitaskingGamesBuildIndexes[Random.Range(0, multitaskingGamesBuildIndexes.Length)]);
         SceneManager.LoadScene(sessionManager.currentSession[currentSessionIndex]);
+        for(int i = 0; i < sessionManager.currentSession.Count;i++)
+        {
+            Debug.Log(sessionManager.currentSession[i]);
+        }
     }
 
     public void ContinueSession()
     {
-        if(currentSessionIndex == 5)
+        if (currentSessionIndex == 5)
         {
             currentSessionIndex = 0;
             sessionManager.currentSession.Clear();
             SceneManager.LoadScene(0);
         }
-        currentSessionIndex++;
-        SceneManager.LoadScene(sessionManager.currentSession[currentSessionIndex]);
+        else
+        {
+            currentSessionIndex++;
+            SceneManager.LoadScene(sessionManager.currentSession[currentSessionIndex]);
+        }
     }
 }

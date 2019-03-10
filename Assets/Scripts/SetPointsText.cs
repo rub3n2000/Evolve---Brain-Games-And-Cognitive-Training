@@ -14,22 +14,47 @@ public class SetPointsText : MonoBehaviour
         switch (thisTextCategories)
         {
             case Categories.reaction:
-                text.text = scoreKeeper.reactionPoints.ToString() + "/" + scoreKeeper.pointsRequiredForLevel[scoreKeeper.reactionLevel + 1].ToString() + " points";
+                if (scoreKeeper.reactionLevel < 100)
+                {
+                    text.text = scoreKeeper.reactionPoints.ToString() + "/" + scoreKeeper.pointsRequiredForLevel[scoreKeeper.reactionLevel + 1].ToString() + " points";
+                }
+                else { text.text = "Max Lvl"; }
                 break;
             case Categories.logic:
-                text.text = scoreKeeper.logicPoints.ToString() + "/" + scoreKeeper.pointsRequiredForLevel[scoreKeeper.logicLevel + 1].ToString() + " points";
+                if (scoreKeeper.logicLevel < 100)
+                {
+                    text.text = scoreKeeper.logicPoints.ToString() + "/" + scoreKeeper.pointsRequiredForLevel[scoreKeeper.logicLevel + 1].ToString() + " points";
+                }
+                else { text.text = "Max Lvl"; }
                 break;
             case Categories.memory:
-                text.text = scoreKeeper.memoryPoints.ToString() + "/" + scoreKeeper.pointsRequiredForLevel[scoreKeeper.memoryLevel + 1].ToString() + " points";
+                if (scoreKeeper.memoryLevel < 100)
+                {
+                    text.text = scoreKeeper.memoryPoints.ToString() + "/" + scoreKeeper.pointsRequiredForLevel[scoreKeeper.memoryLevel + 1].ToString() + " points";
+                }
+                else { text.text = "Max Lvl"; }
                 break;
             case Categories.concentration:
-                text.text = scoreKeeper.concentrationPoints.ToString() + "/" + scoreKeeper.pointsRequiredForLevel[scoreKeeper.concentrationLevel + 1].ToString() + " points";
-                break;
+                if (scoreKeeper.concentrationLevel < 100)
+                {
+                    text.text = scoreKeeper.concentrationPoints.ToString() + "/" + scoreKeeper.pointsRequiredForLevel[scoreKeeper.concentrationLevel + 1].ToString() + " points";
+                }
+                else
+                { text.text = "Max Lvl"; }
+                 break;
             case Categories.language:
-                text.text = scoreKeeper.languagePoints.ToString() + "/" + scoreKeeper.pointsRequiredForLevel[scoreKeeper.languageLevel + 1].ToString() + " points";
+                if (scoreKeeper.languageLevel < 100)
+                {
+                    text.text = scoreKeeper.languagePoints.ToString() + "/" + scoreKeeper.pointsRequiredForLevel[scoreKeeper.languageLevel + 1].ToString() + " points";
+                }
+                else { text.text = "Max Lvl"; }
                 break;
             case Categories.multitasking:
-                text.text = scoreKeeper.multitaskingPoints.ToString() + "/" + scoreKeeper.pointsRequiredForLevel[scoreKeeper.multitaskingLevel + 1].ToString() + " points";
+                if (scoreKeeper.multitaskingLevel < 100)
+                {
+                    text.text = scoreKeeper.multitaskingPoints.ToString() + "/" + scoreKeeper.pointsRequiredForLevel[scoreKeeper.multitaskingLevel + 1].ToString() + " points";
+                }
+                else { text.text = "Max Lvl"; }
                 break;
             default:
                 text.text = "An error occured..";

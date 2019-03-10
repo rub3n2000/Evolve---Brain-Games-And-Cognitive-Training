@@ -39,4 +39,31 @@ public class ScoreKeeper : MonoBehaviour
             Destroy(this);
         }
     }
+    private void Update()
+    {
+        if(reactionLevel > 100)
+        {
+            reactionLevel = 100;
+        }
+        if (logicLevel > 100)
+        {
+            logicLevel = 100;
+        }
+        if (memoryLevel > 100)
+        {
+            memoryLevel = 100;
+        }
+        if (concentrationLevel > 100)
+        {
+            concentrationLevel = 100;
+        }
+        if (languageLevel > 100)
+        {
+            languageLevel = 100;
+        }
+        if (multitaskingLevel > 100)
+        {
+            multitaskingLevel = 100;
+        }
+    }
 }
