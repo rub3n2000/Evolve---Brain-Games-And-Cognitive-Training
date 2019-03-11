@@ -47,7 +47,11 @@ public class XEqualYGame : MonoBehaviour
         if (statementIsTrue)
         {
             times.Add(timeToAnswer);
-            int roundScore = (int)(500 - (timeToAnswer * 10));
+            int roundScore = (int)(200 * scoreKeeper.logicLevel - (timeToAnswer * 5));
+            if (roundScore < 10)
+            {
+                roundScore = 10;
+            }
             scores.Add(roundScore);
             currentScore += roundScore;
             if(currentQuestion >= questionsTillDone)
@@ -64,7 +68,7 @@ public class XEqualYGame : MonoBehaviour
         else
         {
             times.Add(timeToAnswer);
-            int roundScore = -100;
+            int roundScore = -50;
             scores.Add(roundScore);
             currentScore -= roundScore;
             if (currentQuestion >= questionsTillDone)
@@ -85,7 +89,11 @@ public class XEqualYGame : MonoBehaviour
         if (!statementIsTrue)
         {
             times.Add(timeToAnswer);
-            int roundScore = (int)(500 - (timeToAnswer * 10));
+            int roundScore = (int)(200 * scoreKeeper.logicLevel - (timeToAnswer * 5));
+            if (roundScore < 10)
+            {
+                roundScore = 10;
+            }
             scores.Add(roundScore);
             currentScore += roundScore;
             if (currentQuestion >= questionsTillDone)
@@ -102,7 +110,7 @@ public class XEqualYGame : MonoBehaviour
         else
         {
             times.Add(timeToAnswer);
-            int roundScore = -100;
+            int roundScore = -50;
             scores.Add(roundScore);
             currentScore += roundScore;
             if (currentQuestion >= questionsTillDone)

@@ -45,6 +45,27 @@ public class NthLetterGame : MonoBehaviour
         sessionManager = FindObjectOfType<SessionManager>();
         saveLoader = FindObjectOfType<SaveLoader>();
         endScreen.SetActive(false);
+        switch (scoreKeeper.memoryLevel)
+        {
+            case 0:
+                timeTheyCanSeeSentence = 3;
+                break;
+            case 1:
+                timeTheyCanSeeSentence = 3;
+                break;
+            case 2:
+                timeTheyCanSeeSentence = 4;
+                break;
+            case 3:
+                timeTheyCanSeeSentence = 5;
+                break;
+            case 4:
+                timeTheyCanSeeSentence = 6;
+                break;
+            default:
+                timeTheyCanSeeSentence = 6;
+                break;
+        }
         scores = new List<int>();
         answerObject.SetActive(false);
         questionObject.SetActive(true);

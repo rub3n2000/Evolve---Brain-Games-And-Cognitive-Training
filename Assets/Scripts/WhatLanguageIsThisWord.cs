@@ -136,8 +136,8 @@ public class WhatLanguageIsThisWord : MonoBehaviour
 
             if (id == currentAnswerId)
             {
-                scoreKeeper.languagePoints += 500;
-                scores.Add(500);
+                scoreKeeper.languagePoints += 100;
+                scores.Add(100);
                 if (scoreKeeper.languagePoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.languageLevel + 1])
                 {
                     scoreKeeper.languageLevel++;

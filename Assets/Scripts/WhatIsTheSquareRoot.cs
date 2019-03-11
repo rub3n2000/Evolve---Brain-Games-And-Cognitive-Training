@@ -142,7 +142,11 @@ public class WhatIsTheSquareRoot : MonoBehaviour
             canAnswer = false;
             if (correctIndex == index)
             {
-                int roundScore = (int)(500 - (10 * timer));
+                int roundScore = (int)(200 - (5 * timer));
+                if(roundScore < 10)
+                {
+                    roundScore = 10;
+                }
                 times.Add(timer);
                 timer = 0;
                 scoreKeeper.logicPoints += roundScore;
