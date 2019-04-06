@@ -107,7 +107,7 @@ public class WhatDoesThisWordMean : MonoBehaviour
         {
             if (scores[i] == 0)
             {
-                endscreenText.text += "Round " + i + " | Wrong | correct answer : " + correctAnswers[i] + "\n";
+                endscreenText.text += "Round " + i + " | Wrong |" + "\n";
             }
             else
             {
