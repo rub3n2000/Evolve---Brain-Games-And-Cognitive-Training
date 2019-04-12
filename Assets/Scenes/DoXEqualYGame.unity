@@ -217,10 +217,41 @@ Transform:
   - {fileID: 1877906153}
   - {fileID: 526737181}
   - {fileID: 1859815806}
-  - {fileID: 494628101}
-  - {fileID: 425619171}
+  - {fileID: 240386889}
   m_Father: {fileID: 1933460200}
   m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &240386888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 240386889}
+  m_Layer: 0
+  m_Name: Buttons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &240386889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 240386888}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 494628101}
+  - {fileID: 425619171}
+  m_Father: {fileID: 159088841}
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &408802729
 GameObject:
@@ -413,8 +444,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 159088841}
-  m_RootOrder: 5
+  m_Father: {fileID: 240386889}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.76322234, y: 0.13943751}
   m_AnchorMax: {x: 0.76322234, y: 0.13943751}
@@ -546,8 +577,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 159088841}
-  m_RootOrder: 4
+  m_Father: {fileID: 240386889}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.2517037, y: 0.13943751}
   m_AnchorMax: {x: 0.2517037, y: 0.13943751}
@@ -1218,6 +1249,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 408802731}
+  backGround: {fileID: 109535806}
+  buttonContainer: {fileID: 240386888}
+  red: {r: 0.4056604, g: 0, b: 0, a: 1}
+  green: {r: 0, g: 0.24528301, b: 0.007961412, a: 1}
 --- !u!4 &1965127257
 Transform:
   m_ObjectHideFlags: 0

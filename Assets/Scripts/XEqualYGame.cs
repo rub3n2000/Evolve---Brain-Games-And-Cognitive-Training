@@ -22,6 +22,17 @@ public class XEqualYGame : MonoBehaviour
     GameObject next;
     [SerializeField]
     Text timerText;
+    [SerializeField]
+    Image backGround;
+    Color originalColor;
+    [SerializeField]
+    GameObject buttonContainer;
+    bool gameIsGoing = false;
+    [SerializeField]
+    Color red;
+    [SerializeField]
+    Color green;
+
 
     private void Start()
     {
@@ -38,19 +49,27 @@ public class XEqualYGame : MonoBehaviour
         CreateStatement();
         times = new List<float>();
         scores = new List<int>();
+        originalColor = backGround.color;
     }
     private void Update()
     {
-        timeToAnswer += Time.deltaTime;
-        timerText.text = timeToAnswer.ToString("0.0");
+        if (gameIsGoing)
+        {
+            timeToAnswer += Time.deltaTime;
+            timerText.text = timeToAnswer.ToString("0.0");
+        }
     }
 
     public void True()
     {
+        gameIsGoing = false;
         if (statementIsTrue)
         {
+            backGround.color = green;
+            game.SetActive(false);
             times.Add(timeToAnswer);
             int roundScore = (int)(200 * scoreKeeper.logicLevel - (timeToAnswer * 5));
+            timeToAnswer = 0;
             if (roundScore < 10)
             {
                 roundScore = 10;
@@ -59,40 +78,52 @@ public class XEqualYGame : MonoBehaviour
             currentScore += roundScore;
             if(currentQuestion >= questionsTillDone)
             {
-                EndGame();
+                Invoke("EndGame", 1f);
             }
             else
             {
-                currentQuestion++;
-                CreateStatement();
-                timeToAnswer = 0;
+                Invoke("SetUpRound", 1f);
             }
         }
         else
         {
+            backGround.color = red;
+            game.SetActive(false);
             times.Add(timeToAnswer);
             int roundScore = 0;
+            timeToAnswer = 0;
             scores.Add(roundScore);
             currentScore -= roundScore;
             if (currentQuestion >= questionsTillDone)
             {
-                EndGame();
+                Invoke("EndGame", 1f);
             }
             else
             {
-                currentQuestion++;
-                CreateStatement();
-                timeToAnswer = 0;
+                Invoke("SetUpRound", 1f);
             }
         }
+
+    }
+
+    void SetUpRound()
+    {
+        currentQuestion++;
+        CreateStatement();
+        buttonContainer.SetActive(true);
+        backGround.color = originalColor;
     }
 
     public void False()
     {
+        gameIsGoing = false;
         if (!statementIsTrue)
         {
+            backGround.color = green;
+            game.SetActive(false);
             times.Add(timeToAnswer);
             int roundScore = (int)(200 * scoreKeeper.logicLevel - (timeToAnswer * 5));
+            timeToAnswer = 0;
             if (roundScore < 10)
             {
                 roundScore = 10;
@@ -101,30 +132,29 @@ public class XEqualYGame : MonoBehaviour
             currentScore += roundScore;
             if (currentQuestion >= questionsTillDone)
             {
-                EndGame();
+                Invoke("EndGame", 1f);
             }
             else
             {
-                currentQuestion++;
-                CreateStatement();
-                timeToAnswer = 0;
+                Invoke("SetUpRound", 1f);
             }
         }
         else
         {
+            backGround.color = red;
+            game.SetActive(false);
             times.Add(timeToAnswer);
+            timeToAnswer = 0;
             int roundScore = 0;
             scores.Add(roundScore);
             currentScore += roundScore;
             if (currentQuestion >= questionsTillDone)
             {
-                EndGame();
+                Invoke("EndGame", 1f);
             }
             else
             {
-                currentQuestion++;
-                CreateStatement();
-                timeToAnswer = 0;
+                Invoke("SetUpRound", 1f);
             }
         }
     }
@@ -150,6 +180,7 @@ public class XEqualYGame : MonoBehaviour
         game.SetActive(false);
         endText.SetActive(true);
         next.SetActive(true);
+        backGround.color = originalColor;
         for(int i = 0; i < times.Count; i++)
         {
             endText.GetComponent<Text>().text += "Round " + (i + 1).ToString() + " : ";
@@ -168,6 +199,8 @@ public class XEqualYGame : MonoBehaviour
 
     void CreateStatement()
     {
+        gameIsGoing = true;
+        game.SetActive(true);
         switch(scoreKeeper.logicLevel)
         {
             case 0:

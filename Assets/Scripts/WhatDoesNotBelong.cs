@@ -149,7 +149,7 @@ public class WhatDoesNotBelong : MonoBehaviour
     void SetupRound()
     {
         timer = 0;
-        int riddleIndex = Random.Range(0, riddles.Length);
+        int riddleIndex = Random.Range(0, riddles.Length - 1);
         currentAnswerId = Random.Range(0, 4);
         int firstWrongOne = Random.Range(0, 4);
         while(firstWrongOne == currentAnswerId) { firstWrongOne = Random.Range(0, 4); }
