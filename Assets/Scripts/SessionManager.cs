@@ -20,6 +20,11 @@ public class SessionManager : MonoBehaviour
     int[] languageGamesBuildIndexes;
     [SerializeField]
     int[] multitaskingGamesBuildIndexes;
+    [SerializeField]
+    bool overrider = false;
+    [SerializeField]
+    int levelForOverriding = 0;
+
 
     int currentSessionIndex = 0;
 
@@ -48,6 +53,10 @@ public class SessionManager : MonoBehaviour
         sessionManager.currentSession.Add(concentrationGamesBuildIndexes[Random.Range(0, concentrationGamesBuildIndexes.Length)]);
         sessionManager.currentSession.Add(languageGamesBuildIndexes[Random.Range(0, languageGamesBuildIndexes.Length)]);
         sessionManager.currentSession.Add(multitaskingGamesBuildIndexes[Random.Range(0, multitaskingGamesBuildIndexes.Length)]);
+        if(overrider)
+        {
+            sessionManager.currentSession[0] = levelForOverriding;
+        }
         SceneManager.LoadScene(sessionManager.currentSession[currentSessionIndex]);
         for(int i = 0; i < sessionManager.currentSession.Count;i++)
         {
