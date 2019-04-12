@@ -61,7 +61,7 @@ public class WhatDoesNotBelong : MonoBehaviour
         if(gameIsGoing)
         {
             timer += Time.deltaTime;
-            timerText.text = timer.ToString("0.00");
+            timerText.text = timer.ToString("0.0");
         }
         
     }

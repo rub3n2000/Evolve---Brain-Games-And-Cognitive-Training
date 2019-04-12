@@ -20,6 +20,8 @@ public class XEqualYGame : MonoBehaviour
     GameObject endText;
     GameObject game;
     GameObject next;
+    [SerializeField]
+    Text timerText;
 
     private void Start()
     {
@@ -40,6 +42,7 @@ public class XEqualYGame : MonoBehaviour
     private void Update()
     {
         timeToAnswer += Time.deltaTime;
+        timerText.text = timeToAnswer.ToString("0.0");
     }
 
     public void True()

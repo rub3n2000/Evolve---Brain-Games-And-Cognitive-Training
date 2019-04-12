@@ -34,6 +34,9 @@ public class WhatIsTheSquareRoot : MonoBehaviour
     [SerializeField]
     Text endscreenText;
 
+    [SerializeField]
+    Text timerText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -109,6 +112,7 @@ public class WhatIsTheSquareRoot : MonoBehaviour
         if (canAnswer)
         {
             timer += Time.deltaTime;
+            timerText.text = timer.ToString("0.0");
         }
     }
 
