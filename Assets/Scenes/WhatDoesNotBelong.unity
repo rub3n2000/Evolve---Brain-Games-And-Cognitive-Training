@@ -178,6 +178,85 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &208933190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 208933191}
+  - component: {fileID: 208933193}
+  - component: {fileID: 208933192}
+  m_Layer: 5
+  m_Name: Timer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &208933191
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208933190}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1105763691}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.8947917}
+  m_AnchoredPosition: {x: 0, y: 379}
+  m_SizeDelta: {x: 480.7, y: -537.7}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &208933192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208933190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 120
+    m_FontStyle: 1
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 120
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &208933193
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208933190}
+  m_CullTransparentMesh: 0
 --- !u!1 &321487501
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,7 +409,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1462555830}
         m_MethodName: Guess
         m_Mode: 3
         m_Arguments:
@@ -463,7 +542,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1462555830}
         m_MethodName: Guess
         m_Mode: 3
         m_Arguments:
@@ -548,11 +627,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1105763691}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.87820834}
   m_AnchorMax: {x: 0.5, y: 0.87820834}
-  m_AnchoredPosition: {x: 0, y: -141}
+  m_AnchoredPosition: {x: 0, y: -455}
   m_SizeDelta: {x: 788.5, y: 389.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &732592063
@@ -588,7 +667,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: What Word Does Not Belong?
+  m_Text: What Does Not Belong?
 --- !u!222 &732592064
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -706,6 +785,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 208933191}
   - {fileID: 732592062}
   - {fileID: 1138401346}
   m_Father: {fileID: 1796452370}
@@ -749,11 +829,11 @@ RectTransform:
   - {fileID: 527293133}
   - {fileID: 1737448354}
   m_Father: {fileID: 1105763691}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.1785625}
   m_AnchorMax: {x: 0.5, y: 0.1785625}
-  m_AnchoredPosition: {x: 0.000012398, y: 354}
+  m_AnchoredPosition: {x: 0.000012398, y: 188}
   m_SizeDelta: {x: 1013.2, y: 795.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1138401347
@@ -853,11 +933,208 @@ MonoBehaviour:
   game: {fileID: 1105763690}
   endScreen: {fileID: 1162633892}
   endscreenText: {fileID: 1508317822}
+  timerText: {fileID: 208933192}
   riddles:
-  - theOneThatDoesntBelong: 
-    firstThatBelongs: 
-    secondThatBelongs: 
-    thirdThatBelongs: 
+  - theOneThatDoesntBelong: Phone
+    firstThatBelongs: Orange
+    secondThatBelongs: Green
+    thirdThatBelongs: Blue
+  - theOneThatDoesntBelong: Leg
+    firstThatBelongs: Mouth
+    secondThatBelongs: Ear
+    thirdThatBelongs: Nose
+  - theOneThatDoesntBelong: Work
+    firstThatBelongs: Video Games
+    secondThatBelongs: TV
+    thirdThatBelongs: Music
+  - theOneThatDoesntBelong: Pants
+    firstThatBelongs: Phone
+    secondThatBelongs: Computer
+    thirdThatBelongs: Microwave
+  - theOneThatDoesntBelong: Door Handle
+    firstThatBelongs: Camera
+    secondThatBelongs: Mirror
+    thirdThatBelongs: Memory
+  - theOneThatDoesntBelong: Losing
+    firstThatBelongs: Winning
+    secondThatBelongs: Getting Money
+    thirdThatBelongs: Being Loved
+  - theOneThatDoesntBelong: Floor
+    firstThatBelongs: Fridge
+    secondThatBelongs: Box
+    thirdThatBelongs: Chest
+  - theOneThatDoesntBelong: Apple
+    firstThatBelongs: Orange
+    secondThatBelongs: Carrot
+    thirdThatBelongs: Sun
+  - theOneThatDoesntBelong: Pee
+    firstThatBelongs: Soda
+    secondThatBelongs: Water
+    thirdThatBelongs: Apple Juice
+  - theOneThatDoesntBelong: Hand
+    firstThatBelongs: Glass
+    secondThatBelongs: Window
+    thirdThatBelongs: Spit
+  - theOneThatDoesntBelong: Dinner Plate
+    firstThatBelongs: Knife
+    secondThatBelongs: Gun
+    thirdThatBelongs: Baseball Bat
+  - theOneThatDoesntBelong: Movie
+    firstThatBelongs: Car
+    secondThatBelongs: Plane
+    thirdThatBelongs: Bus
+  - theOneThatDoesntBelong: Pillow
+    firstThatBelongs: Sun
+    secondThatBelongs: Flash Light
+    thirdThatBelongs: Lamp
+  - theOneThatDoesntBelong: Water Bottle
+    firstThatBelongs: Mirror
+    secondThatBelongs: Eyes
+    thirdThatBelongs: Polaroid Camera
+  - theOneThatDoesntBelong: Chess
+    firstThatBelongs: Football
+    secondThatBelongs: Handball
+    thirdThatBelongs: Rock Band
+  - theOneThatDoesntBelong: Wall
+    firstThatBelongs: Radio
+    secondThatBelongs: Speaker
+    thirdThatBelongs: Headphones
+  - theOneThatDoesntBelong: Floor
+    firstThatBelongs: Door
+    secondThatBelongs: Window
+    thirdThatBelongs: Water Bottle
+  - theOneThatDoesntBelong: Book
+    firstThatBelongs: Email
+    secondThatBelongs: Phone
+    thirdThatBelongs: Live Chat
+  - theOneThatDoesntBelong: Chair
+    firstThatBelongs: Arm
+    secondThatBelongs: Leg
+    thirdThatBelongs: Ear
+  - theOneThatDoesntBelong: Sunglasses
+    firstThatBelongs: Laser Eye Surgery
+    secondThatBelongs: Contact Lenses
+    thirdThatBelongs: Glasses
+  - theOneThatDoesntBelong: Earring
+    firstThatBelongs: Sweater
+    secondThatBelongs: Pants
+    thirdThatBelongs: Socks
+  - theOneThatDoesntBelong: Grass
+    firstThatBelongs: Chair
+    secondThatBelongs: Table
+    thirdThatBelongs: Bench
+  - theOneThatDoesntBelong: Mistle Toe
+    firstThatBelongs: Apple
+    secondThatBelongs: Banana
+    thirdThatBelongs: Taco
+  - theOneThatDoesntBelong: Football
+    firstThatBelongs: Book
+    secondThatBelongs: News Paper
+    thirdThatBelongs: Magazine
+  - theOneThatDoesntBelong: Sunny
+    firstThatBelongs: Desert
+    secondThatBelongs: Forest
+    thirdThatBelongs: Swamp
+  - theOneThatDoesntBelong: Frogs
+    firstThatBelongs: Humans
+    secondThatBelongs: Cats
+    thirdThatBelongs: Dogs
+  - theOneThatDoesntBelong: Computer
+    firstThatBelongs: Mobile Phone
+    secondThatBelongs: Wallet
+    thirdThatBelongs: Keys
+  - theOneThatDoesntBelong: Action
+    firstThatBelongs: Rock
+    secondThatBelongs: Pop
+    thirdThatBelongs: Rap
+  - theOneThatDoesntBelong: Toilet Paper
+    firstThatBelongs: Paint
+    secondThatBelongs: Pen
+    thirdThatBelongs: Charcoal
+  - theOneThatDoesntBelong: Dog
+    firstThatBelongs: Raven
+    secondThatBelongs: Eagle
+    thirdThatBelongs: Seagull
+  - theOneThatDoesntBelong: Car
+    firstThatBelongs: Compass
+    secondThatBelongs: Map
+    thirdThatBelongs: Gps
+  - theOneThatDoesntBelong: Mouth
+    firstThatBelongs: Heart
+    secondThatBelongs: Lungs
+    thirdThatBelongs: Liver
+  - theOneThatDoesntBelong: Sweater
+    firstThatBelongs: Necklace
+    secondThatBelongs: Earring
+    thirdThatBelongs: Watch
+  - theOneThatDoesntBelong: NATO
+    firstThatBelongs: Norway
+    secondThatBelongs: England
+    thirdThatBelongs: Russia
+  - theOneThatDoesntBelong: Whale
+    firstThatBelongs: Salmon
+    secondThatBelongs: Mackerel
+    thirdThatBelongs: Catfish
+  - theOneThatDoesntBelong: Rap
+    firstThatBelongs: Fantasy
+    secondThatBelongs: Sci-Fi
+    thirdThatBelongs: Thriller
+  - theOneThatDoesntBelong: Hamster
+    firstThatBelongs: Bee
+    secondThatBelongs: Wasp
+    thirdThatBelongs: Fly
+  - theOneThatDoesntBelong: Bomb
+    firstThatBelongs: Security Camera
+    secondThatBelongs: Security Guard
+    thirdThatBelongs: Fence
+  - theOneThatDoesntBelong: Elvish
+    firstThatBelongs: Swedish
+    secondThatBelongs: English
+    thirdThatBelongs: Chinese
+  - theOneThatDoesntBelong: Soccer
+    firstThatBelongs: Handball
+    secondThatBelongs: Basketball
+    thirdThatBelongs: Baseball
+  - theOneThatDoesntBelong: Atheism
+    firstThatBelongs: Christianity
+    secondThatBelongs: Hinduism
+    thirdThatBelongs: Buddhism
+  - theOneThatDoesntBelong: Banana
+    firstThatBelongs: Apple
+    secondThatBelongs: Nuts
+    thirdThatBelongs: Popcorn
+  - theOneThatDoesntBelong: Vanilla Icecream
+    firstThatBelongs: Chocolate
+    secondThatBelongs: Cacao
+    thirdThatBelongs: Chocolate Cake
+  - theOneThatDoesntBelong: Towel
+    firstThatBelongs: Tissue
+    secondThatBelongs: Toilet Paper
+    thirdThatBelongs: Wet Wipes
+  - theOneThatDoesntBelong: Microwave
+    firstThatBelongs: Electric Oven
+    secondThatBelongs: Fireplace
+    thirdThatBelongs: Blankets
+  - theOneThatDoesntBelong: Water
+    firstThatBelongs: Coffee
+    secondThatBelongs: Spaghetti
+    thirdThatBelongs: Tea
+  - theOneThatDoesntBelong: News Paper
+    firstThatBelongs: Rap
+    secondThatBelongs: Poem
+    thirdThatBelongs: Haiku
+  - theOneThatDoesntBelong: Sun
+    firstThatBelongs: Scarecrow
+    secondThatBelongs: Clowns
+    thirdThatBelongs: Knives
+  - theOneThatDoesntBelong: Literature
+    firstThatBelongs: Tight Spaces
+    secondThatBelongs: Spiders
+    thirdThatBelongs: Drowning
+  - theOneThatDoesntBelong: Sweater
+    firstThatBelongs: Sandals
+    secondThatBelongs: Shoes
+    thirdThatBelongs: Socks
 --- !u!4 &1462555831
 Transform:
   m_ObjectHideFlags: 0
@@ -1029,7 +1306,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1462555830}
         m_MethodName: Guess
         m_Mode: 3
         m_Arguments:
@@ -1162,7 +1439,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1462555830}
         m_MethodName: Guess
         m_Mode: 3
         m_Arguments:
@@ -1396,7 +1673,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1462555830}
         m_MethodName: ContinueSession
         m_Mode: 1
         m_Arguments:

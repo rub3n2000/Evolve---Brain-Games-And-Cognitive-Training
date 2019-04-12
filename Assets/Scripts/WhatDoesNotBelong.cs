@@ -26,11 +26,17 @@ public class WhatDoesNotBelong : MonoBehaviour
     GameObject endScreen;
     [SerializeField]
     Text endscreenText;
+    [SerializeField]
+    Text timerText;
 
     List<int> scores;
+    List<float> times;
     bool canAnswer = true;
     [SerializeField]
     Riddle[] riddles;
+
+    bool gameIsGoing = false;
+    float timer = 0;
 
     List<string> correctAnswers;
 
@@ -44,6 +50,7 @@ public class WhatDoesNotBelong : MonoBehaviour
         game.SetActive(true);
         originalColor = button1Text.color;
         scores = new List<int>();
+        times = new List<float>();
         correctAnswers = new List<string>();
         SetupRound();
     }
@@ -51,7 +58,12 @@ public class WhatDoesNotBelong : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if(gameIsGoing)
+        {
+            timer += Time.deltaTime;
+            timerText.text = timer.ToString("0.00");
+        }
+        
     }
 
 
@@ -78,8 +90,11 @@ public class WhatDoesNotBelong : MonoBehaviour
 
             if (id == currentAnswerId)
             {
-                scoreKeeper.languagePoints += 100;
-                scores.Add(100);
+                times.Add(timer);
+                int scoreToAdd = (int)(100 + (200 - timer * 10));
+                scoreKeeper.languagePoints += scoreToAdd;
+                scores.Add(scoreToAdd);
+                
                 if (scoreKeeper.languagePoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.languageLevel + 1])
                 {
                     scoreKeeper.languageLevel++;
@@ -105,11 +120,11 @@ public class WhatDoesNotBelong : MonoBehaviour
         {
             if (scores[i] == 0)
             {
-                endscreenText.text += "Round " + i + " | Wrong |" + "\n";
+                endscreenText.text += "Wrong answer | " + " Time : " + times[i].ToString("0.00") + "\n";
             }
             else
             {
-                endscreenText.text += "Round " + i + " | Correct | " + scores[i] + " points" + "\n";
+                endscreenText.text += "Correct answer | " + "Time : " + times[i].ToString("0.00") + "\n";
             }
         }
         endscreenText.text += "\n" + " Well Done, Keep Improving!";
@@ -133,6 +148,7 @@ public class WhatDoesNotBelong : MonoBehaviour
 
     void SetupRound()
     {
+        timer = 0;
         int riddleIndex = Random.Range(0, riddles.Length);
         currentAnswerId = Random.Range(0, 4);
         int firstWrongOne = Random.Range(0, 4);
@@ -170,6 +186,7 @@ public class WhatDoesNotBelong : MonoBehaviour
             case 2: button3Text.text = riddles[riddleIndex].thirdThatBelongs; break;
             case 3: button4Text.text = riddles[riddleIndex].thirdThatBelongs; break;
         }
+        gameIsGoing = true;
     }
 
     [System.Serializable]

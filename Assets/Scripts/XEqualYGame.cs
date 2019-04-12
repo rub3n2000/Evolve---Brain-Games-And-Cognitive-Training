@@ -68,7 +68,7 @@ public class XEqualYGame : MonoBehaviour
         else
         {
             times.Add(timeToAnswer);
-            int roundScore = -50;
+            int roundScore = 0;
             scores.Add(roundScore);
             currentScore -= roundScore;
             if (currentQuestion >= questionsTillDone)
@@ -110,7 +110,7 @@ public class XEqualYGame : MonoBehaviour
         else
         {
             times.Add(timeToAnswer);
-            int roundScore = -50;
+            int roundScore = 0;
             scores.Add(roundScore);
             currentScore += roundScore;
             if (currentQuestion >= questionsTillDone)
@@ -150,7 +150,7 @@ public class XEqualYGame : MonoBehaviour
         for(int i = 0; i < times.Count; i++)
         {
             endText.GetComponent<Text>().text += "Round " + (i + 1).ToString() + " : ";
-            if(scores[i] == -100)
+            if(scores[i] == 0)
             {
                 endText.GetComponent<Text>().text += "Wrong answer | " + " Time : " + times[i].ToString("0.00") + "\n";
             }
