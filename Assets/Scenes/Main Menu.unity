@@ -1340,7 +1340,7 @@ MonoBehaviour:
   languageGamesBuildIndexes: 010000000800000009000000130000001400000015000000
   multitaskingGamesBuildIndexes: 06000000100000001100000012000000
   overrider: 1
-  levelForOverriding: 5
+  levelForOverriding: 4
 --- !u!114 &1019804070
 MonoBehaviour:
   m_ObjectHideFlags: 0
