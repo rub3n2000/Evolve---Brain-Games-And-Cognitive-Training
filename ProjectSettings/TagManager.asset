@@ -10,6 +10,7 @@ TagManager:
   - EndScreen
   - Next
   - WithPicture
+  - Berry
   layers:
   - Default
   - TransparentFX

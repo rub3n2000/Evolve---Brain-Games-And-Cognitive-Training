@@ -152,7 +152,7 @@ public class MissingNumberInRow : MonoBehaviour
         wordText.text = "";
         for(int i = 0; i < wordToDefinitions[wordIndex].numberRow.Length;i++)
         {
-            wordText.text += wordToDefinitions[wordIndex].numberRow[i].ToString() + ", ";
+            wordText.text += wordToDefinitions[wordIndex].numberRow[i].ToString() + " - ";
         }
         currentAnswerId = Random.Range(0, 4);
         correctAnswers.Add(wordToDefinitions[wordIndex].missingNumber);
