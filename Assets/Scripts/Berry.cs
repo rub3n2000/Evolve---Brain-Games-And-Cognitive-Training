@@ -5,11 +5,11 @@ using UnityEngine;
 public class Berry : MonoBehaviour
 {
     public float speed = 1;
-    PlayBlockBreakerAndHangman playBlock;
+    BerryCatchingAndMath playBlock;
     // Start is called before the first frame update
     void Start()
     {
-        playBlock = FindObjectOfType<PlayBlockBreakerAndHangman>();
+        playBlock = FindObjectOfType<BerryCatchingAndMath>();
         speed = playBlock.speed;
     }
 

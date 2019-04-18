@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameEnder : MonoBehaviour
+public class BerryCatchingGameEnder : MonoBehaviour
 {
-    PlayBlockBreakerAndHangman playBlockBreakerAndHangman;
+    BerryCatchingAndMath BerryCatchingAndMath;
     // Start is called before the first frame update
     void Start()
     {
-        playBlockBreakerAndHangman = FindObjectOfType<PlayBlockBreakerAndHangman>();
+        BerryCatchingAndMath = FindObjectOfType<BerryCatchingAndMath>();
     }
 
     // Update is called once per frame
@@ -19,7 +19,7 @@ public class GameEnder : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        playBlockBreakerAndHangman.EndGame();
+        BerryCatchingAndMath.EndGame();
         Destroy(collision.gameObject);
     }
 }
