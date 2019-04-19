@@ -9,12 +9,15 @@ public class SaveLoader : MonoBehaviour
 
     ScoreKeeper scoreKeeper;
 
+    SoundManager soundManager;
+
     bool appJustLoaded = true;
 
     // Start is called before the first frame update
     void Awake()
     {
         scoreKeeper = GetComponent<ScoreKeeper>();
+        soundManager = GetComponent<SoundManager>();
 
         if(saveLoader == null)
         {
@@ -56,6 +59,10 @@ public class SaveLoader : MonoBehaviour
         saveData.concentrationPoints = scoreKeeper.concentrationPoints;
         saveData.languagePoints = scoreKeeper.languagePoints;
         saveData.multitaskingPoints = scoreKeeper.multitaskingPoints;
+        saveData.musicVolume = SoundManager.musicVolume;
+        saveData.sfxVolume = SoundManager.sfxVolume;
+        saveData.musicMuted = SoundManager.musicMuted;
+        saveData.sfxMuted = SoundManager.sfxMuted;
 
         string saveDataString = JsonUtility.ToJson(saveData);
 
@@ -82,6 +89,10 @@ public class SaveLoader : MonoBehaviour
         scoreKeeper.concentrationPoints = savedData.concentrationPoints;
         scoreKeeper.languagePoints = savedData.languagePoints;
         scoreKeeper.multitaskingPoints = savedData.multitaskingPoints;
+        SoundManager.musicVolume = savedData.musicVolume;
+        SoundManager.sfxVolume = savedData.sfxVolume;
+        SoundManager.musicMuted = savedData.musicMuted;
+        SoundManager.sfxMuted = savedData.sfxMuted;
     }
     #endregion
 }
@@ -101,4 +112,10 @@ public class SaveData
     public int concentrationPoints;
     public int languagePoints;
     public int multitaskingPoints;
+
+    public float musicVolume;
+    public float sfxVolume;
+
+    public bool musicMuted;
+    public bool sfxMuted;
 }
