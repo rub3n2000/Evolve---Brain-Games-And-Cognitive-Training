@@ -8,6 +8,7 @@ public class CardWithPicture : MonoBehaviour
     SessionManager sessionManager;
     SaveLoader saveLoader;
     ScoreKeeper scoreKeeper;
+    AntonymsSfxManager antonymsSfxManager;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,7 @@ public class CardWithPicture : MonoBehaviour
         sessionManager = FindObjectOfType<SessionManager>();
         saveLoader = FindObjectOfType<SaveLoader>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        antonymsSfxManager = FindObjectOfType<AntonymsSfxManager>();
     }
 
     // Update is called once per frame
@@ -34,6 +36,8 @@ public class CardWithPicture : MonoBehaviour
             {
                 scoreKeeper.concentrationLevel++;
             }
+            Camera.main.GetComponent<Animator>().SetTrigger("Shake");
+            antonymsSfxManager.PlayAudio(true);
             pickTheCardWithPictures.totalScore += 10;
             saveLoader.SaveGameData();
             GetComponent<SpriteRenderer>().material.color = Color.yellow;

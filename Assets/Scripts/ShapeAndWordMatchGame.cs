@@ -48,11 +48,12 @@ public class ShapeAndWordMatchGame : MonoBehaviour
     [SerializeField]
     Text timerText;
     [SerializeField]
-    Image background;
+    SpriteRenderer background;
     int shapeIndex = 0;
     bool gameIsGoing = false;
     List<string> shapeStrings;
     bool hasChanged = false;
+    AntonymsSfxManager antonymsSfxManager;
 
     // Start is called before the first frame update
     void Start()
@@ -63,9 +64,10 @@ public class ShapeAndWordMatchGame : MonoBehaviour
         sessionManager = FindObjectOfType<SessionManager>();
         saveLoader = FindObjectOfType<SaveLoader>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        antonymsSfxManager = FindObjectOfType<AntonymsSfxManager>();
         endScreenContainer.SetActive(false);
         gameContainer.SetActive(true);
-        originalColor = background.color;
+        originalColor = background.material.color;
         image.SetActive(true);
         shapes = new List<Sprite>();
         shapes.Add(circle);
@@ -86,7 +88,7 @@ public class ShapeAndWordMatchGame : MonoBehaviour
     void SetupGame()
     {
         gameContainer.SetActive(true);
-        background.color = originalColor;
+        background.material.color = originalColor;
         int modifier = Random.Range(0, 2);
         if(modifier == 0)
         {
@@ -152,7 +154,9 @@ public class ShapeAndWordMatchGame : MonoBehaviour
 
             if (_hasChanged == hasChanged)
             {
-                background.color = green;
+                Camera.main.GetComponent<Animator>().SetTrigger("Shake");
+                background.material.color = green;
+                antonymsSfxManager.PlayAudio(true);
                 int scoreToAdd = 100 + (int)(100 - timer);
                 times.Add(timer);
                 timer = 0;
@@ -161,8 +165,9 @@ public class ShapeAndWordMatchGame : MonoBehaviour
             }
             else
             {
-                background.color = red;
+                background.material.color = red;
                 times.Add(timer);
+                antonymsSfxManager.PlayAudio(false);
                 timer = 0;
                 scores.Add(0);
             }

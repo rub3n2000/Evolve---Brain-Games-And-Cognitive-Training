@@ -35,6 +35,7 @@ public class WhatFiveNumbersWereShown : MonoBehaviour
     int[] currentRoundNumbers = new int[5];
     int maxRounds = 10;
     float timeAllowed = 1;
+    AntonymsSfxManager antonymsSfxManager;
 
 
     // Start is called before the first frame update
@@ -44,6 +45,7 @@ public class WhatFiveNumbersWereShown : MonoBehaviour
         sessionManager = FindObjectOfType<SessionManager>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         saveLoader = FindObjectOfType<SaveLoader>();
+        antonymsSfxManager = FindObjectOfType<AntonymsSfxManager>();
         endScreen.SetActive(false);
         switch(scoreKeeper.memoryLevel)
         {
@@ -86,15 +88,18 @@ public class WhatFiveNumbersWereShown : MonoBehaviour
             if(number == currentRoundNumbers[0])
             {
                 scores.Add(100);
+                antonymsSfxManager.PlayAudio(true);
                 scoreKeeper.memoryPoints += 100;
                 if(scoreKeeper.memoryPoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.memoryLevel+1])
                 { scoreKeeper.memoryLevel++; }
                 saveLoader.SaveGameData();
                 firstNumberText.color = Color.green;
+                Camera.main.GetComponent<Animator>().SetTrigger("Shake");
             }
             else {
                 scores.Add(0);
                 firstNumberText.color = Color.red;
+                antonymsSfxManager.PlayAudio(false);
             }
         }
         else if(secondNumberText.text =="")
@@ -108,10 +113,13 @@ public class WhatFiveNumbersWereShown : MonoBehaviour
                 { scoreKeeper.memoryLevel++; }
                 saveLoader.SaveGameData();
                 secondNumberText.color = Color.green;
+                Camera.main.GetComponent<Animator>().SetTrigger("Shake");
+                antonymsSfxManager.PlayAudio(true);
             }
             else
             {
                 secondNumberText.color = Color.red;
+                antonymsSfxManager.PlayAudio(false);
             }
         }
         else if (thirdNumberText.text == "")
@@ -125,10 +133,13 @@ public class WhatFiveNumbersWereShown : MonoBehaviour
                 { scoreKeeper.memoryLevel++; }
                 saveLoader.SaveGameData();
                 thirdNumberText.color = Color.green;
+                Camera.main.GetComponent<Animator>().SetTrigger("Shake");
+                antonymsSfxManager.PlayAudio(true);
             }
             else
             {
                 thirdNumberText.color = Color.red;
+                antonymsSfxManager.PlayAudio(false);
             }
         }
         else if (fourthNumberText.text == "")
@@ -142,10 +153,13 @@ public class WhatFiveNumbersWereShown : MonoBehaviour
                 { scoreKeeper.memoryLevel++; }
                 saveLoader.SaveGameData();
                 fourthNumberText.color = Color.green;
+                Camera.main.GetComponent<Animator>().SetTrigger("Shake");
+                antonymsSfxManager.PlayAudio(true);
             }
             else
             {
                 fourthNumberText.color = Color.red;
+                antonymsSfxManager.PlayAudio(false);
             }
         }
         else if (fifthNumberText.text == "")
@@ -159,10 +173,13 @@ public class WhatFiveNumbersWereShown : MonoBehaviour
                 { scoreKeeper.memoryLevel++; }
                 saveLoader.SaveGameData();
                 fifthNumberText.color = Color.green;
+                Camera.main.GetComponent<Animator>().SetTrigger("Shake");
+                antonymsSfxManager.PlayAudio(true);
             }
             else
             {
                 fifthNumberText.color = Color.red;
+                antonymsSfxManager.PlayAudio(false);
             }
             if (currentRound >= maxRounds)
             {

@@ -7,6 +7,9 @@ public class Leaf : MonoBehaviour
     LeafBlower leafBlower;
     SaveLoader saveLoader;
     ScoreKeeper scoreKeeper;
+    [SerializeField]
+    GameObject explosion;
+    AntonymsSfxManager antonymsSfxManager;
 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +17,7 @@ public class Leaf : MonoBehaviour
         leafBlower = FindObjectOfType<LeafBlower>();
         saveLoader = FindObjectOfType<SaveLoader>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        antonymsSfxManager = FindObjectOfType<AntonymsSfxManager>();
     }
 
     // Update is called once per frame
@@ -25,12 +29,15 @@ public class Leaf : MonoBehaviour
     private void OnMouseDown()
     {
         scoreKeeper.reactionPoints += 10;
-        if(scoreKeeper.reactionPoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.reactionLevel + 1])
+        antonymsSfxManager.PlayAudio(true);
+        if (scoreKeeper.reactionPoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.reactionLevel + 1])
         {
             scoreKeeper.reactionLevel++;
         }
         saveLoader.SaveGameData();
         leafBlower.totalScoreCollected += 10;
+        Instantiate(explosion, transform.position, Quaternion.identity);
+        Camera.main.GetComponent<Animator>().SetTrigger("Shake");
         Destroy(gameObject);
     }
 }

@@ -35,6 +35,9 @@ public class BerryCatchingAndMath : MonoBehaviour
     [SerializeField]
     Transform[] spawnPoints;
 
+    [SerializeField]
+    AntonymsSfxManager antonymsSfxManager;
+
 
     float spawnFrequency = 2.5f;
 
@@ -330,9 +333,9 @@ public class BerryCatchingAndMath : MonoBehaviour
             }
             totalScore += roundScore;
             currentScore += roundScore;
-         
-          
-            
+            Camera.main.GetComponent<Animator>().SetTrigger("Shake");
+            antonymsSfxManager.PlayAudio(true);
+
             Invoke("SetUpRound", 1f);
             
         }
@@ -340,7 +343,7 @@ public class BerryCatchingAndMath : MonoBehaviour
         {
             backGround.color = red;
             game.SetActive(false);
- 
+            antonymsSfxManager.PlayAudio(false);
             Invoke("SetUpRound", 1f);
             
         }
@@ -356,17 +359,19 @@ public class BerryCatchingAndMath : MonoBehaviour
             backGround.color = green;
             game.SetActive(false);
             int roundScore = (int)(200 * scoreKeeper.logicLevel - (timeToAnswer * 5));
-
+            Camera.main.GetComponent<Animator>().SetTrigger("Shake");
             totalScore += roundScore;
             currentScore += roundScore;
         
             Invoke("SetUpRound", 1f);
+            antonymsSfxManager.PlayAudio(true);
         }
         else
         {
             backGround.color = red;
             game.SetActive(false);
             Invoke("SetUpRound", 1f);
+            antonymsSfxManager.PlayAudio(false);
         }
         timeToAnswer = 0;
     }

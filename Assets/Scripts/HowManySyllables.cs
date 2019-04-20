@@ -34,6 +34,7 @@ public class HowManySyllables : MonoBehaviour
     bool canAnswer = true;
     [SerializeField]
     WordToDefinition[] wordToDefinitions;
+    AntonymsSfxManager antonymsSfxManager;
 
     List<string> correctAnswers;
 
@@ -43,6 +44,7 @@ public class HowManySyllables : MonoBehaviour
         sessionManager = FindObjectOfType<SessionManager>();
         saveLoader = FindObjectOfType<SaveLoader>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        antonymsSfxManager = FindObjectOfType<AntonymsSfxManager>();
         endScreen.SetActive(false);
         game.SetActive(true);
         originalColor = button1Text.color;
@@ -84,6 +86,8 @@ public class HowManySyllables : MonoBehaviour
             if (id == wordToDefinitions[wordIndex].syllableCount)
             {
                 scoreKeeper.languagePoints += 100;
+                Camera.main.GetComponent<Animator>().SetTrigger("Shake");
+                antonymsSfxManager.PlayAudio(true);
                 scores.Add(100);
                 if (scoreKeeper.languagePoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.languageLevel + 1])
                 {
@@ -91,7 +95,7 @@ public class HowManySyllables : MonoBehaviour
                 }
                 saveLoader.SaveGameData();
             }
-            else { scores.Add(0); }
+            else { scores.Add(0); antonymsSfxManager.PlayAudio(false); }
             Invoke("StartNewRound", 1);
         }
     }

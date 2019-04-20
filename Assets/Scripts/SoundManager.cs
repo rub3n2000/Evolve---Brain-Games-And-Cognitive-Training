@@ -6,7 +6,7 @@ public class SoundManager : MonoBehaviour
 {
     static SoundManager soundManager = null;
     public static float musicVolume = 0.2f;
-    public static float sfxVolume = 0.2f;
+    public static float sfxVolume = 0.4f;
     public static bool musicMuted = false;
     public static bool sfxMuted = false;    
     AudioSource audi;

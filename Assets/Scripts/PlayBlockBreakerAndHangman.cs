@@ -9,6 +9,9 @@ public class PlayBlockBreakerAndHangman : MonoBehaviour
     SaveLoader saveLoader;
     ScoreKeeper scoreKeeper;
 
+    [SerializeField]
+    GameObject game2;
+
     public float speed = 0.8f;
 
 
@@ -75,7 +78,7 @@ public class PlayBlockBreakerAndHangman : MonoBehaviour
     Transform[] spawnPoints;
 
     float spawnFrequency = 2.5f;
-
+    AntonymsSfxManager antonymsSfxManager;
     float timer = 0;
 
     public void EndGame()
@@ -83,6 +86,7 @@ public class PlayBlockBreakerAndHangman : MonoBehaviour
         endScreen.SetActive(true);
         buttons.SetActive(false);
         game.SetActive(false);
+        game2.SetActive(false);
         
         endscreenText.text = "Total score " + totalScore;
         scoreKeeper.multitaskingPoints += totalScore;
@@ -103,7 +107,8 @@ public class PlayBlockBreakerAndHangman : MonoBehaviour
     {
         if(word.IndexOf(character) != -1)
         {
-            if(word.IndexOf(character) == 0)
+            antonymsSfxManager.PlayAudio(true);
+            if (word.IndexOf(character) == 0)
             {
                 firstLetter.text = word[0].ToString().ToUpper();
             }
@@ -129,7 +134,8 @@ public class PlayBlockBreakerAndHangman : MonoBehaviour
                 scoreKeeper.multitaskingPoints += 1000;
                 speed = 0.8f;
                 spawnFrequency = 2.5f;
-                if(scoreKeeper.multitaskingPoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.multitaskingLevel +1])
+                Camera.main.GetComponent<Animator>().SetTrigger("Shake");
+                if (scoreKeeper.multitaskingPoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.multitaskingLevel +1])
                 {
                     scoreKeeper.multitaskingLevel++;
                 }
@@ -154,6 +160,7 @@ public class PlayBlockBreakerAndHangman : MonoBehaviour
         }
         else
         {
+            antonymsSfxManager.PlayAudio(false);
             if (life1.color == Color.green)
             {
                 life1.color = Color.red;
@@ -206,6 +213,7 @@ public class PlayBlockBreakerAndHangman : MonoBehaviour
         sessionManager = FindObjectOfType<SessionManager>();
         saveLoader = FindObjectOfType<SaveLoader>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        antonymsSfxManager = FindObjectOfType<AntonymsSfxManager>();
         endScreen.SetActive(false);
         game.SetActive(false);
         buttons.SetActive(false);

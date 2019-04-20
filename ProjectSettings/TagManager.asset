@@ -11,6 +11,7 @@ TagManager:
   - Next
   - WithPicture
   - Berry
+  - background
   layers:
   - Default
   - TransparentFX

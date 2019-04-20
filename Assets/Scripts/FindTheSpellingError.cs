@@ -30,6 +30,9 @@ public class FindTheSpellingError : MonoBehaviour
 
     int correctId = 0;
 
+    [SerializeField]
+    AntonymsSfxManager antonymsSfxManager;
+
 
     [HideInInspector]
     public float timer = 0;
@@ -107,10 +110,14 @@ public class FindTheSpellingError : MonoBehaviour
         {
             totalScore += 100 - (int)(timer * 5);
             ColorIt();
+            Camera.main.GetComponent<Animator>().SetTrigger("Shake");
+            antonymsSfxManager.PlayAudio(true);
+
         }
         else
         {
             totalScore -= 5;
+            antonymsSfxManager.PlayAudio(false);
             ColorIt();
         }
     }

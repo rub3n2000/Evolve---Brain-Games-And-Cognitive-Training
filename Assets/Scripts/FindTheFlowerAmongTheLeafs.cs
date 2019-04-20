@@ -48,8 +48,14 @@ public class FindTheFlowerAmongTheLeafs : MonoBehaviour
     [HideInInspector]
     public float timer = 0;
 
+    [SerializeField]
+    SpriteRenderer background;
 
     int maxRounds = 11;
+
+    Color originalColor;
+
+   
 
     // Start is called before the first frame update
     void Start()
@@ -61,6 +67,7 @@ public class FindTheFlowerAmongTheLeafs : MonoBehaviour
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         spawnedObjects = new List<GameObject>();
         endScreenContainer.SetActive(false);
+        originalColor = background.material.color;
         gameContainer.SetActive(false);
         gameContainer2.SetActive(false);
         intro.SetActive(true);
@@ -69,6 +76,7 @@ public class FindTheFlowerAmongTheLeafs : MonoBehaviour
 
     public void StartNewRound()
     {
+        background.material.color = originalColor;
         gameIsGoing = true;
         gameContainer2.SetActive(true);
         for (int i = 0; i < spawnedObjects.Count; i++)

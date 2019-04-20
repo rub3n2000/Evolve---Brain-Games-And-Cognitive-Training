@@ -39,6 +39,8 @@ public class PressLightWhenGreen : MonoBehaviour
     [SerializeField]
     float timeRemainsGreen = 1f;
 
+    AntonymsSfxManager antonymsSfxManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -46,6 +48,7 @@ public class PressLightWhenGreen : MonoBehaviour
         scoreText.text = "0";
         saveLoader = FindObjectOfType<SaveLoader>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        antonymsSfxManager = FindObjectOfType<AntonymsSfxManager>();
         endScreenContainer.SetActive(false);
         gameContainer.SetActive(false);
         Invoke("SetupGame", 3f);
@@ -118,12 +121,15 @@ public class PressLightWhenGreen : MonoBehaviour
             totalScore += 10;
             saveLoader.SaveGameData();
             SwitchColor();
+            Camera.main.GetComponent<Animator>().SetTrigger("Shake");
+            antonymsSfxManager.PlayAudio(true);
             scoreText.text = totalScore.ToString("0");
         }
         else
         {
             scoreKeeper.concentrationPoints += 5;
             totalScore -= 5;
+            antonymsSfxManager.PlayAudio(false);
             saveLoader.SaveGameData();
             scoreText.text = totalScore.ToString("0");
         }

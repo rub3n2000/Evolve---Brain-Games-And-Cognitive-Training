@@ -23,7 +23,7 @@ public class XEqualYGame : MonoBehaviour
     [SerializeField]
     Text timerText;
     [SerializeField]
-    Image backGround;
+    SpriteRenderer backGround;
     Color originalColor;
     [SerializeField]
     GameObject buttonContainer;
@@ -33,6 +33,8 @@ public class XEqualYGame : MonoBehaviour
     [SerializeField]
     Color green;
 
+    [SerializeField]
+    AntonymsSfxManager antonymsSfxManager;
 
     private void Start()
     {
@@ -49,7 +51,7 @@ public class XEqualYGame : MonoBehaviour
         CreateStatement();
         times = new List<float>();
         scores = new List<int>();
-        originalColor = backGround.color;
+        originalColor = backGround.material.color;
     }
     private void Update()
     {
@@ -65,7 +67,9 @@ public class XEqualYGame : MonoBehaviour
         gameIsGoing = false;
         if (statementIsTrue)
         {
-            backGround.color = green;
+            Camera.main.GetComponent<Animator>().SetTrigger("Shake");
+            antonymsSfxManager.PlayAudio(true);
+            backGround.material.color = green;
             game.SetActive(false);
             times.Add(timeToAnswer);
             int roundScore = (int)(200 * scoreKeeper.logicLevel - (timeToAnswer * 5));
@@ -87,7 +91,8 @@ public class XEqualYGame : MonoBehaviour
         }
         else
         {
-            backGround.color = red;
+            backGround.material.color = red;
+            antonymsSfxManager.PlayAudio(false);
             game.SetActive(false);
             times.Add(timeToAnswer);
             int roundScore = 0;
@@ -111,7 +116,7 @@ public class XEqualYGame : MonoBehaviour
         currentQuestion++;
         CreateStatement();
         buttonContainer.SetActive(true);
-        backGround.color = originalColor;
+        backGround.material.color = originalColor;
     }
 
     public void False()
@@ -119,7 +124,9 @@ public class XEqualYGame : MonoBehaviour
         gameIsGoing = false;
         if (!statementIsTrue)
         {
-            backGround.color = green;
+            Camera.main.GetComponent<Animator>().SetTrigger("Shake");
+            backGround.material.color = green;
+            antonymsSfxManager.PlayAudio(true);
             game.SetActive(false);
             times.Add(timeToAnswer);
             int roundScore = (int)(200 * scoreKeeper.logicLevel - (timeToAnswer * 5));
@@ -141,8 +148,9 @@ public class XEqualYGame : MonoBehaviour
         }
         else
         {
-            backGround.color = red;
+            backGround.material.color = red;
             game.SetActive(false);
+            antonymsSfxManager.PlayAudio(false);
             times.Add(timeToAnswer);
             timeToAnswer = 0;
             int roundScore = 0;
@@ -180,7 +188,7 @@ public class XEqualYGame : MonoBehaviour
         game.SetActive(false);
         endText.SetActive(true);
         next.SetActive(true);
-        backGround.color = originalColor;
+        backGround.material.color = originalColor;
         for(int i = 0; i < times.Count; i++)
         {
             endText.GetComponent<Text>().text += "Round " + (i + 1).ToString() + " : ";

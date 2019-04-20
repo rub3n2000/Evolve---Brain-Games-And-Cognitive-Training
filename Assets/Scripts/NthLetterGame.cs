@@ -39,11 +39,13 @@ public class NthLetterGame : MonoBehaviour
     Text endText;
     [SerializeField]
     GameObject endScreen;
+    AntonymsSfxManager antonymsSfxManager;
     void Start()
     {
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         sessionManager = FindObjectOfType<SessionManager>();
         saveLoader = FindObjectOfType<SaveLoader>();
+        antonymsSfxManager = FindObjectOfType<AntonymsSfxManager>();
         endScreen.SetActive(false);
         switch (scoreKeeper.memoryLevel)
         {
@@ -127,10 +129,12 @@ public class NthLetterGame : MonoBehaviour
         {
             scoreKeeper.memoryPoints += 100;
             scores.Add(100);
+            Camera.main.GetComponent<Animator>().SetTrigger("Shake");
             saveLoader.SaveGameData();
+            antonymsSfxManager.PlayAudio(true);
         }
         else
-        { scores.Add(0); }
+        { scores.Add(0); antonymsSfxManager.PlayAudio(false); }
         if (currentRound >= 10)
         {
             questionObject.SetActive(false);

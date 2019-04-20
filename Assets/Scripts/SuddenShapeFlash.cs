@@ -50,6 +50,7 @@ public class SuddenShapeFlash : MonoBehaviour
     [SerializeField]
     Text explanationText;
     float timeAllowedToWatchShape;
+    AntonymsSfxManager antonymsSfxManager;
 
 
     // Start is called before the first frame update
@@ -59,6 +60,7 @@ public class SuddenShapeFlash : MonoBehaviour
         sessionManager = FindObjectOfType<SessionManager>();
         saveLoader = FindObjectOfType<SaveLoader>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        antonymsSfxManager = FindObjectOfType<AntonymsSfxManager>();
         endScreenContainer.SetActive(false);
         gameContainer.SetActive(true);
         originalColor = button1Image.color;
@@ -146,6 +148,8 @@ public class SuddenShapeFlash : MonoBehaviour
 
             if (id == currentAnswerId)
             {
+                antonymsSfxManager.PlayAudio(true);
+                Camera.main.GetComponent<Animator>().SetTrigger("Shake");
                 scoreKeeper.concentrationPoints += 100;
                 scores.Add(100);
                 if (scoreKeeper.concentrationPoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.concentrationLevel + 1])
@@ -154,7 +158,7 @@ public class SuddenShapeFlash : MonoBehaviour
                 }
                 saveLoader.SaveGameData();
             }
-            else { scores.Add(0); }
+            else { scores.Add(0); antonymsSfxManager.PlayAudio(false); }
             Invoke("SetupRound", 1);
         }
     }

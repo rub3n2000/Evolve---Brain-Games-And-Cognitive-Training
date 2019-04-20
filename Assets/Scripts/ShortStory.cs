@@ -104,7 +104,7 @@ public class ShortStory : MonoBehaviour
     [SerializeField]
     string[] petTypes;
     [SerializeField]
-    Image backGround;
+    SpriteRenderer backGround;
 
     Color originalColor;
 
@@ -143,6 +143,8 @@ public class ShortStory : MonoBehaviour
     [SerializeField]
     PotentialQuestions[] potentialQuestions;
 
+    AntonymsSfxManager antonymsSfxManager;
+
 
     // Start is called before the first frame update
     void Start()
@@ -153,9 +155,10 @@ public class ShortStory : MonoBehaviour
         sessionManager = FindObjectOfType<SessionManager>();
         saveLoader = FindObjectOfType<SaveLoader>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        antonymsSfxManager = FindObjectOfType<AntonymsSfxManager>();
         endContainer.SetActive(false);
         gameContainer.SetActive(true);
-        originalColor = backGround.color;
+        originalColor = backGround.material.color;
         SetupGame();
         timeAllowedToRead -= scoreKeeper.memoryLevel;
         if(timeAllowedToRead < 10)
@@ -230,7 +233,7 @@ public class ShortStory : MonoBehaviour
 
     void SetupQuestion()
     {
-        backGround.color = originalColor;
+        backGround.material.color = originalColor;
         if(currentQuestion >= maxQuestions)
         {
             EndGame();
@@ -291,27 +294,29 @@ public class ShortStory : MonoBehaviour
         {
                 scoreKeeper.memoryPoints += 100;
                 scores.Add(100);
-                if (scoreKeeper.memoryPoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.memoryLevel + 1])
+                Camera.main.GetComponent<Animator>().SetTrigger("Shake");
+                antonymsSfxManager.PlayAudio(true);
+            if (scoreKeeper.memoryPoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.memoryLevel + 1])
                 {
                     scoreKeeper.memoryLevel++;
                 }
             saveLoader.SaveGameData(); CorrectAnswer();
         }
-        else { scores.Add(0); WrongAnswer(); }
+        else { scores.Add(0); WrongAnswer(); antonymsSfxManager.PlayAudio(false); }
         answerText.text = "";
     }
 
     void CorrectAnswer()
     {
         part2Container.SetActive(false);
-        backGround.color = green;
+        backGround.material.color = green;
         Invoke("SetupQuestion", 1f);
     }
 
     void WrongAnswer()
     {
         part2Container.SetActive(false);
-        backGround.color = red;
+        backGround.material.color = red;
         Invoke("SetupQuestion", 1f);
     }
 

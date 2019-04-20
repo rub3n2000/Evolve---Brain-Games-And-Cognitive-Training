@@ -37,12 +37,15 @@ public class WhatIsTheSquareRoot : MonoBehaviour
     [SerializeField]
     Text timerText;
 
+    AntonymsSfxManager antonymsSfxManager;
+
     // Start is called before the first frame update
     void Start()
     {
         sessionManager = FindObjectOfType<SessionManager>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
         saveLoader = FindObjectOfType<SaveLoader>();
+        antonymsSfxManager = FindObjectOfType<AntonymsSfxManager>();
         originalColor = button1Text.color;
         scores = new List<int>();
         times = new List<float>();
@@ -146,8 +149,11 @@ public class WhatIsTheSquareRoot : MonoBehaviour
             canAnswer = false;
             if (correctIndex == index)
             {
+                Camera.main.GetComponent<Animator>().SetTrigger("Shake");
+
                 int roundScore = (int)(200 - (5 * timer));
-                if(roundScore < 10)
+                antonymsSfxManager.PlayAudio(true);
+                if (roundScore < 10)
                 {
                     roundScore = 10;
                 }
@@ -161,7 +167,7 @@ public class WhatIsTheSquareRoot : MonoBehaviour
                 }
                 saveLoader.SaveGameData();
             }
-            else { scores.Add(0); times.Add(timer); timer = 0; }
+            else { scores.Add(0); times.Add(timer); timer = 0; antonymsSfxManager.PlayAudio(false); }
             if (currentRound >= maxRounds)
             {
                 EndGame();

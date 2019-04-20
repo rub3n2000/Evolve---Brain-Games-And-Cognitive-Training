@@ -5,10 +5,21 @@ using UnityEngine;
 public class Flower : MonoBehaviour
 {
     FindTheFlowerAmongTheLeafs findTheFlowerAmong;
+
+    GameObject background;
+
+    
+    AntonymsSfxManager antonymsSfxManager;
+
+    [SerializeField]
+    Color green;
+
     // Start is called before the first frame update
     void Start()
     {
         findTheFlowerAmong = FindObjectOfType<FindTheFlowerAmongTheLeafs>();
+        antonymsSfxManager = FindObjectOfType<AntonymsSfxManager>();
+        background = GameObject.FindGameObjectWithTag("background");
     }
 
     private void OnMouseDown()
@@ -17,11 +28,13 @@ public class Flower : MonoBehaviour
         {
             int score = 100 - (int)(findTheFlowerAmong.timer * 5);
             findTheFlowerAmong.totalScore += score;
+            antonymsSfxManager.PlayAudio(true);
             findTheFlowerAmong.scores.Add(score);
             findTheFlowerAmong.times.Add(findTheFlowerAmong.timer);
-            GetComponent<SpriteRenderer>().material.color = Color.green;
+            background.GetComponent<SpriteRenderer>().material.color = green;
             findTheFlowerAmong.Invoke("StartNewRound", 1f);
             findTheFlowerAmong.gameIsGoing = false;
+            Camera.main.GetComponent<Animator>().SetTrigger("Shake");
         }
     }
   

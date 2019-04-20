@@ -36,7 +36,7 @@ public class LeavesFlowersAndBranches : MonoBehaviour
     Text endscreenText;
 
     [SerializeField]
-    Image background;
+    SpriteRenderer background;
 
     List<int> scores;
     bool canAnswer = true;
@@ -50,16 +50,19 @@ public class LeavesFlowersAndBranches : MonoBehaviour
 
     List<string> correctAnswers;
 
+    AntonymsSfxManager antonymsSfxManager;
+
     // Start is called before the first frame update
     void Start()
     {
         sessionManager = FindObjectOfType<SessionManager>();
         saveLoader = FindObjectOfType<SaveLoader>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        antonymsSfxManager = FindObjectOfType<AntonymsSfxManager>();
         endScreen.SetActive(false);
         game.SetActive(false);
         game2.SetActive(false);
-        originalColor = background.color;
+        originalColor = background.material.color;
         scores = new List<int>();
         correctAnswers = new List<string>();
         SetupRound();
@@ -76,14 +79,16 @@ public class LeavesFlowersAndBranches : MonoBehaviour
                 {
                     scoreKeeper.memoryPoints += 400;
                     scores.Add(400);
+                    antonymsSfxManager.PlayAudio(true);
+                    Camera.main.GetComponent<Animator>().SetTrigger("Shake");
                     if (scoreKeeper.memoryPoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.memoryLevel + 1])
                     {
                         scoreKeeper.memoryLevel++;
                     }
                     saveLoader.SaveGameData();
-                    background.color = Color.green;
+                    background.material.color = Color.green;
                 }
-                else { scores.Add(0); background.color = Color.red; }
+                else { scores.Add(0); background.material.color = Color.red; antonymsSfxManager.PlayAudio(false); }
             }
             else
             {
@@ -91,16 +96,18 @@ public class LeavesFlowersAndBranches : MonoBehaviour
                 {
                     scoreKeeper.memoryPoints += 400;
                     scores.Add(400);
+                    Camera.main.GetComponent<Animator>().SetTrigger("Shake");
+                    antonymsSfxManager.PlayAudio(true);
                     if (scoreKeeper.memoryPoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.memoryLevel + 1])
                     {
                         scoreKeeper.memoryLevel++;
                     }
                     saveLoader.SaveGameData();
-                    background.color = Color.green;
+                    background.material.color = Color.green;
                 }
                 else
                 {
-                    scores.Add(0); background.color = Color.red;
+                    scores.Add(0); background.material.color = Color.red; antonymsSfxManager.PlayAudio(false);
                 }
             }
             Invoke("SetupRound", 1);
@@ -135,7 +142,7 @@ public class LeavesFlowersAndBranches : MonoBehaviour
  
     void SetupRound()
     {
-        background.color = originalColor;
+        background.material.color = originalColor;
         flowersCount = 0;
         branchesCount = 0;
         leafsCount = 0;
@@ -191,7 +198,7 @@ public class LeavesFlowersAndBranches : MonoBehaviour
         }
         else
         {
-            questionText.text = "How Many Flowers were there?";
+            questionText.text = "How Many Berries were there?";
             currentAnswer = flowersCount;
         }
     }

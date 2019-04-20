@@ -27,6 +27,8 @@ public class DidTheShapeChange : MonoBehaviour
     SaveLoader saveLoader;
     ScoreKeeper scoreKeeper;
 
+    [SerializeField]
+    AntonymsSfxManager antonymsSfxManager;
 
 
     public List<int> scores;
@@ -110,6 +112,7 @@ public class DidTheShapeChange : MonoBehaviour
         if ((hasChanged && guess == 1) || (!hasChanged && guess == 0))
         {
             int score = 10 + (int)(100 - (timer * 10));
+            antonymsSfxManager.PlayAudio(true);
             scores.Add(score);
             times.Add(timer);
             scoreKeeper.memoryPoints += score;
@@ -119,11 +122,13 @@ public class DidTheShapeChange : MonoBehaviour
             }
             saveLoader.SaveGameData();
             backGround.material.color = Color.green;
+            Camera.main.GetComponent<Animator>().SetTrigger("Shake");
         }
         else
         {
             scoreKeeper.memoryPoints += 0;
             scores.Add(0);
+            antonymsSfxManager.PlayAudio(false);
             times.Add(timer);
             if (scoreKeeper.memoryPoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.memoryLevel + 1])
             {

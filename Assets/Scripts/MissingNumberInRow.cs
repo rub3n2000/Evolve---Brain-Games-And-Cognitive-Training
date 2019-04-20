@@ -42,6 +42,7 @@ public class MissingNumberInRow : MonoBehaviour
     WordToDefinition[] wordToDefinitions;
 
     List<float> correctAnswers;
+    AntonymsSfxManager antonymsSfxManager;
 
     // Start is called before the first frame update
     void Start()
@@ -49,6 +50,7 @@ public class MissingNumberInRow : MonoBehaviour
         sessionManager = FindObjectOfType<SessionManager>();
         saveLoader = FindObjectOfType<SaveLoader>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        antonymsSfxManager = FindObjectOfType<AntonymsSfxManager>();
         endScreen.SetActive(false);
         game.SetActive(true);
         originalColor = button1Text.color;
@@ -90,7 +92,10 @@ public class MissingNumberInRow : MonoBehaviour
 
             if (id == currentAnswerId)
             {
+                Camera.main.GetComponent<Animator>().SetTrigger("Shake");
+
                 int score = (int)(1000 - (timer * 10));
+                antonymsSfxManager.PlayAudio(true);
                 scoreKeeper.languagePoints +=score;
                 scores.Add(score);
                 if (scoreKeeper.languagePoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.languageLevel + 1])
@@ -99,7 +104,7 @@ public class MissingNumberInRow : MonoBehaviour
                 }
                 saveLoader.SaveGameData();
             }
-            else { scores.Add(0); }
+            else { scores.Add(0); antonymsSfxManager.PlayAudio(false); }
             Invoke("StartNewRound", 1);
         }
     }

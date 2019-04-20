@@ -34,7 +34,12 @@ public class WhatDoesThisWordMean : MonoBehaviour
     [SerializeField]
     WordToDefinition[] wordToDefinitions;
 
+    [SerializeField]
+    AntonymsSfxManager antonymSfxManager;
+
     List<string> correctAnswers;
+
+    Animator cameraAni;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +52,7 @@ public class WhatDoesThisWordMean : MonoBehaviour
         originalColor = button1Text.color;
         scores = new List<int>();
         correctAnswers = new List<string>();
+        cameraAni = Camera.main.GetComponent<Animator>();
         SetupRound();
     }
 
@@ -80,6 +86,8 @@ public class WhatDoesThisWordMean : MonoBehaviour
 
             if (id == currentAnswerId)
             {
+                cameraAni.SetTrigger("Shake");
+                antonymSfxManager.PlayAudio(true);
                 scoreKeeper.languagePoints += 100;
                 scores.Add(100);
                 if (scoreKeeper.languagePoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.languageLevel + 1])
@@ -88,7 +96,7 @@ public class WhatDoesThisWordMean : MonoBehaviour
                 }
                 saveLoader.SaveGameData();
             }
-            else { scores.Add(0); }
+            else { scores.Add(0); antonymSfxManager.PlayAudio(false);  }
             Invoke("StartNewRound", 1);
         }
     }

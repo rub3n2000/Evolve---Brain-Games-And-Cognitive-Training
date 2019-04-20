@@ -38,6 +38,8 @@ public class WhatDoesNotBelong : MonoBehaviour
     bool gameIsGoing = false;
     float timer = 0;
 
+    AntonymsSfxManager antonymsSfxManager;
+
     List<string> correctAnswers;
 
     // Start is called before the first frame update
@@ -46,6 +48,7 @@ public class WhatDoesNotBelong : MonoBehaviour
         sessionManager = FindObjectOfType<SessionManager>();
         saveLoader = FindObjectOfType<SaveLoader>();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
+        antonymsSfxManager = FindObjectOfType<AntonymsSfxManager>();
         endScreen.SetActive(false);
         game.SetActive(true);
         originalColor = button1Text.color;
@@ -90,6 +93,8 @@ public class WhatDoesNotBelong : MonoBehaviour
 
             if (id == currentAnswerId)
             {
+                Camera.main.GetComponent<Animator>().SetTrigger("Shake");
+                antonymsSfxManager.PlayAudio(true);
                 times.Add(timer);
                 int scoreToAdd = (int)(100 + (200 - timer * 10));
                 scoreKeeper.languagePoints += scoreToAdd;
@@ -101,7 +106,7 @@ public class WhatDoesNotBelong : MonoBehaviour
                 }
                 saveLoader.SaveGameData();
             }
-            else { scores.Add(0); }
+            else { scores.Add(0); antonymsSfxManager.PlayAudio(false); }
             Invoke("StartNewRound", 1);
         }
     }
