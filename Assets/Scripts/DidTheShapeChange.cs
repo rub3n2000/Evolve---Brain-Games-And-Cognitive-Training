@@ -111,7 +111,7 @@ public class DidTheShapeChange : MonoBehaviour
     {
         if ((hasChanged && guess == 1) || (!hasChanged && guess == 0))
         {
-            int score = 10 + (int)(100 - (timer * 10));
+            int score = 80 + (int)(100 - (timer * 10));
             antonymsSfxManager.PlayAudio(true);
             scores.Add(score);
             times.Add(timer);

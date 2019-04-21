@@ -62,6 +62,11 @@ public class MainMenuControls : MonoBehaviour
         saveLoader.SaveGameData();
     }
 
+    public void OpenLink()
+    {
+       Application.OpenURL("https://evolve-brain-games.flycricket.io/privacy.html");
+    }
+
     public void Muter(bool _music)
     {
         if(_music)

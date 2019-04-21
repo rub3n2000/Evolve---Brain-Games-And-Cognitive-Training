@@ -78,4 +78,12 @@ public class SessionManager : MonoBehaviour
             SceneManager.LoadScene(sessionManager.currentSession[currentSessionIndex]);
         }
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
 }

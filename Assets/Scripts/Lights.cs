@@ -16,7 +16,7 @@ public class Lights : MonoBehaviour
     private void OnMouseDown()
     {
         antonymsSfxManager.PlayAudio(true);
-        hitTheLightsGame.totalScore += 10;
+        hitTheLightsGame.totalScore += 100;
         hitTheLightsGame.StartRound();
         Camera.main.GetComponent<Animator>().SetTrigger("Shake");
         Destroy(gameObject);

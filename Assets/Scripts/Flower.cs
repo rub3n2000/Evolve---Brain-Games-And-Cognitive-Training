@@ -26,7 +26,7 @@ public class Flower : MonoBehaviour
     {
         if (findTheFlowerAmong.gameIsGoing)
         {
-            int score = 100 - (int)(findTheFlowerAmong.timer * 5);
+            int score = 100 - (int)(findTheFlowerAmong.timer * 5) + 50;
             findTheFlowerAmong.totalScore += score;
             antonymsSfxManager.PlayAudio(true);
             findTheFlowerAmong.scores.Add(score);

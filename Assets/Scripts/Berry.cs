@@ -10,7 +10,14 @@ public class Berry : MonoBehaviour
     void Start()
     {
         playBlock = FindObjectOfType<BerryCatchingAndMath>();
-        speed = playBlock.speed;
+        if (playBlock)
+        {
+            speed = playBlock.speed;
+        }
+        else
+        {
+            speed = FindObjectOfType<PlayBlockBreakerAndHangman>().speed;
+        }
     }
 
     // Update is called once per frame

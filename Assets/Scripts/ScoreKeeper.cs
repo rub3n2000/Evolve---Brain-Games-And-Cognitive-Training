@@ -25,6 +25,8 @@ public class ScoreKeeper : MonoBehaviour
     
     public int[] pointsRequiredForLevel;
 
+   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,8 @@ public class ScoreKeeper : MonoBehaviour
         {
             Destroy(this);
         }
+
+       
     }
     private void Update()
     {

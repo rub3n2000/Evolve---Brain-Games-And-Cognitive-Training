@@ -117,8 +117,8 @@ public class PressLightWhenGreen : MonoBehaviour
     {
         if(canBePressed)
         {
-            scoreKeeper.concentrationPoints += 10;
-            totalScore += 10;
+            scoreKeeper.concentrationPoints += 100;
+            totalScore += 100;
             saveLoader.SaveGameData();
             SwitchColor();
             Camera.main.GetComponent<Animator>().SetTrigger("Shake");

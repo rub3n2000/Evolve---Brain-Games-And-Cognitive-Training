@@ -108,7 +108,7 @@ public class FindTheSpellingError : MonoBehaviour
         guessId = id;
         if (id == correctId)
         {
-            totalScore += 100 - (int)(timer * 5);
+            totalScore += 100 - (int)(timer * 5) + 50;
             ColorIt();
             Camera.main.GetComponent<Animator>().SetTrigger("Shake");
             antonymsSfxManager.PlayAudio(true);

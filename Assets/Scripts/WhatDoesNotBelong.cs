@@ -106,7 +106,7 @@ public class WhatDoesNotBelong : MonoBehaviour
                 }
                 saveLoader.SaveGameData();
             }
-            else { scores.Add(0); antonymsSfxManager.PlayAudio(false); }
+            else { scores.Add(0); antonymsSfxManager.PlayAudio(false); times.Add(timer); }
             Invoke("StartNewRound", 1);
         }
     }
