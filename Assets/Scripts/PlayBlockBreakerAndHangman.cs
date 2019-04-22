@@ -77,7 +77,7 @@ public class PlayBlockBreakerAndHangman : MonoBehaviour
     [SerializeField]
     Transform[] spawnPoints;
 
-    float spawnFrequency = 2.5f;
+    float spawnFrequency = 4f;
     AntonymsSfxManager antonymsSfxManager;
     float timer = 0;
 
@@ -133,7 +133,7 @@ public class PlayBlockBreakerAndHangman : MonoBehaviour
                 totalScore += 1000;
                 scoreKeeper.multitaskingPoints += 1000;
                 speed = 0.8f;
-                spawnFrequency = 2.5f;
+                spawnFrequency = 4f;
                 Camera.main.GetComponent<Animator>().SetTrigger("Shake");
                 if (scoreKeeper.multitaskingPoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.multitaskingLevel +1])
                 {

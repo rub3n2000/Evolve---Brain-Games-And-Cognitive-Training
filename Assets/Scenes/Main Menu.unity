@@ -6742,8 +6742,8 @@ MonoBehaviour:
   concentrationGamesBuildIndexes: 050000000f00000016000000
   languageGamesBuildIndexes: 010000000800000009000000130000001400000015000000
   multitaskingGamesBuildIndexes: 1000000012000000
-  overrider: 0
-  levelForOverriding: 26
+  overrider: 1
+  levelForOverriding: 5
 --- !u!114 &1019804070
 MonoBehaviour:
   m_ObjectHideFlags: 0

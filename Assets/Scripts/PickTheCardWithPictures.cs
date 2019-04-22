@@ -74,6 +74,10 @@ public class PickTheCardWithPictures : MonoBehaviour
         endScreenContainer.SetActive(true);
         gameContainer.SetActive(false);
         gameContainer2.SetActive(false);
+        if (scoreKeeper.concentrationPoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.concentrationLevel + 1])
+        {
+            scoreKeeper.concentrationLevel++;
+        }
         endscreenText.text = "Total score " + totalScore;
     }
 

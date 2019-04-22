@@ -32,10 +32,7 @@ public class CardWithPicture : MonoBehaviour
         {
             pickTheCardWithPictures.tryCount++;
             scoreKeeper.concentrationPoints += 100;
-            if(scoreKeeper.concentrationPoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.concentrationLevel +1])
-            {
-                scoreKeeper.concentrationLevel++;
-            }
+            
             Camera.main.GetComponent<Animator>().SetTrigger("Shake");
             antonymsSfxManager.PlayAudio(true);
             pickTheCardWithPictures.totalScore += 100;

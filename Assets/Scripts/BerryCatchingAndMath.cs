@@ -39,7 +39,7 @@ public class BerryCatchingAndMath : MonoBehaviour
     AntonymsSfxManager antonymsSfxManager;
 
 
-    float spawnFrequency = 2.5f;
+    float spawnFrequency = 4f;
 
     int totalScore = 0;
 
