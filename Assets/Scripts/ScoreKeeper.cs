@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ScoreKeeper : MonoBehaviour
 {
@@ -19,6 +20,14 @@ public class ScoreKeeper : MonoBehaviour
     public int concentrationPoints { get; set; } = 0;
     public int languagePoints { get; set; } = 0;
     public int multitaskingPoints { get; set; } = 0;
+
+            int oldReactionPoints;
+            int oldLogicPoints;
+            int oldMemoryPoints;
+            int oldConcentrationPoints;
+            int oldLanguagePoints;
+            int oldMultitaskingPoints;
+
 
     SaveLoader saveLoader;
 
@@ -40,12 +49,48 @@ public class ScoreKeeper : MonoBehaviour
         {
             Destroy(this);
         }
-
+        oldReactionPoints = reactionLevel;
+        oldLogicPoints = logicLevel;
+        oldMemoryPoints = memoryLevel;
+        oldConcentrationPoints = concentrationLevel;
+        oldLanguagePoints = languageLevel;
+        oldMultitaskingPoints = multitaskingLevel;
        
     }
     private void Update()
     {
-        if(reactionLevel > 100)
+        if(SceneManager.GetActiveScene().buildIndex == 0 && oldReactionPoints != reactionLevel)
+        {
+            FindObjectOfType<MainMenuControls>().ChangeReactionScreenStatus(true);
+            oldReactionPoints = reactionLevel;
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 0 && oldLogicPoints != logicLevel)
+        {
+            FindObjectOfType<MainMenuControls>().ChangeLogicScreen(true);
+            oldLogicPoints = logicLevel;
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 0 && oldMemoryPoints != memoryLevel)
+        {
+            FindObjectOfType<MainMenuControls>().ChangeMemoryScreen(true);
+            oldMemoryPoints = memoryLevel;
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 0 && oldConcentrationPoints != concentrationLevel)
+        {
+            FindObjectOfType<MainMenuControls>().ChangeConcentrationScreen(true);
+            oldConcentrationPoints = concentrationLevel;
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 0 && oldLanguagePoints != languageLevel)
+        {
+            FindObjectOfType<MainMenuControls>().ChangeLanguageScreen(true);
+            oldLanguagePoints = languageLevel;
+        }
+        if (SceneManager.GetActiveScene().buildIndex == 0 && oldMultitaskingPoints != multitaskingLevel)
+        {
+            FindObjectOfType<MainMenuControls>().ChangeMultiTaskingScreen(true);
+            oldMultitaskingPoints = multitaskingLevel;
+        }
+
+        if (reactionLevel > 100)
         {
             reactionLevel = 100;
         }

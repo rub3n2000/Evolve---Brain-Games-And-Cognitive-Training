@@ -87,9 +87,9 @@ public class WhatFiveNumbersWereShown : MonoBehaviour
             firstNumberText.text = number.ToString();
             if(number == currentRoundNumbers[0])
             {
-                scores.Add(100);
+                scores.Add(20);
                 antonymsSfxManager.PlayAudio(true);
-                scoreKeeper.memoryPoints += 100;
+                scoreKeeper.memoryPoints += 20;
                 if(scoreKeeper.memoryPoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.memoryLevel+1])
                 { scoreKeeper.memoryLevel++; }
                 saveLoader.SaveGameData();
@@ -107,8 +107,8 @@ public class WhatFiveNumbersWereShown : MonoBehaviour
             secondNumberText.text = number.ToString();
             if (number == currentRoundNumbers[1])
             {
-                scores[currentRound - 1] += 100;
-                scoreKeeper.memoryPoints += 100;
+                scores[currentRound - 1] += 20;
+                scoreKeeper.memoryPoints += 20;
                 if (scoreKeeper.memoryPoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.memoryLevel + 1])
                 { scoreKeeper.memoryLevel++; }
                 saveLoader.SaveGameData();
@@ -127,8 +127,8 @@ public class WhatFiveNumbersWereShown : MonoBehaviour
             thirdNumberText.text = number.ToString();
             if (number == currentRoundNumbers[2])
             {
-                scores[currentRound - 1] += 100;
-                scoreKeeper.memoryPoints += 100;
+                scores[currentRound - 1] += 20;
+                scoreKeeper.memoryPoints += 20;
                 if (scoreKeeper.memoryPoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.memoryLevel + 1])
                 { scoreKeeper.memoryLevel++; }
                 saveLoader.SaveGameData();
@@ -147,8 +147,8 @@ public class WhatFiveNumbersWereShown : MonoBehaviour
             fourthNumberText.text = number.ToString();
             if (number == currentRoundNumbers[3])
             {
-                scores[currentRound - 1] += 100;
-                scoreKeeper.memoryPoints += 100;
+                scores[currentRound - 1] += 20;
+                scoreKeeper.memoryPoints += 20;
                 if (scoreKeeper.memoryPoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.memoryLevel + 1])
                 { scoreKeeper.memoryLevel++; }
                 saveLoader.SaveGameData();
@@ -167,8 +167,8 @@ public class WhatFiveNumbersWereShown : MonoBehaviour
             fifthNumberText.text = number.ToString();
             if (number == currentRoundNumbers[4])
             {
-                scores[currentRound - 1] += 100;
-                scoreKeeper.memoryPoints += 100;
+                scores[currentRound - 1] += 20;
+                scoreKeeper.memoryPoints += 20;
                 if (scoreKeeper.memoryPoints > scoreKeeper.pointsRequiredForLevel[scoreKeeper.memoryLevel + 1])
                 { scoreKeeper.memoryLevel++; }
                 saveLoader.SaveGameData();
@@ -198,7 +198,7 @@ public class WhatFiveNumbersWereShown : MonoBehaviour
         game.SetActive(false);
         endScreen.SetActive(true);
         endScreenText.text = "";
-        endScreenText.text += "100 Points For\n Each Correct Number \n \n";
+        endScreenText.text += "20 Points For\n Each Correct Number \n \n";
         for (int i = 1; i < scores.Count + 1; i++)
         {
             endScreenText.text += "Round " + i + " | Score : " + scores[i - 1] + "\n";

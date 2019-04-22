@@ -325,7 +325,7 @@ public class BerryCatchingAndMath : MonoBehaviour
         {
             backGround.color = green;
             game.SetActive(false);
-            int roundScore = (int)(200 * scoreKeeper.logicLevel - (timeToAnswer * 5));
+            int roundScore = (int)(200 - (timeToAnswer));
             timeToAnswer = 0;
             if (roundScore < 10)
             {
@@ -358,7 +358,11 @@ public class BerryCatchingAndMath : MonoBehaviour
         {
             backGround.color = green;
             game.SetActive(false);
-            int roundScore = (int)(200 * scoreKeeper.logicLevel - (timeToAnswer * 5));
+            int roundScore = (int)(200 - (timeToAnswer));
+            if (roundScore < 10)
+            {
+                roundScore = 10;
+            }
             Camera.main.GetComponent<Animator>().SetTrigger("Shake");
             totalScore += roundScore;
             currentScore += roundScore;

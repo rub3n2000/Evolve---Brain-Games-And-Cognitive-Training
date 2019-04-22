@@ -1274,7 +1274,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Continue Sesssion
+  m_Text: Continue Session
 --- !u!222 &1928727826
 CanvasRenderer:
   m_ObjectHideFlags: 0

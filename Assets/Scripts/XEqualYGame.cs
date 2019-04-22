@@ -72,7 +72,7 @@ public class XEqualYGame : MonoBehaviour
             backGround.material.color = green;
             game.SetActive(false);
             times.Add(timeToAnswer);
-            int roundScore = (int)(200 * scoreKeeper.logicLevel - (timeToAnswer * 5));
+            int roundScore = (int)(200 - (timeToAnswer * 5));
             timeToAnswer = 0;
             if (roundScore < 10)
             {
@@ -129,7 +129,7 @@ public class XEqualYGame : MonoBehaviour
             antonymsSfxManager.PlayAudio(true);
             game.SetActive(false);
             times.Add(timeToAnswer);
-            int roundScore = (int)(200 * scoreKeeper.logicLevel - (timeToAnswer * 5));
+            int roundScore = (int)(200 - (timeToAnswer * 5));
             timeToAnswer = 0;
             if (roundScore < 10)
             {

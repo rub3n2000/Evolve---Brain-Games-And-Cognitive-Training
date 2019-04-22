@@ -310,10 +310,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 09e68d14eda199d4d8d8ef37b53c5e80, type: 3}
-    m_FontSize: 105
+    m_FontSize: 90
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 8
     m_MaxSize: 118
     m_Alignment: 1
     m_AlignByGeometry: 0
@@ -2559,10 +2559,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 09e68d14eda199d4d8d8ef37b53c5e80, type: 3}
-    m_FontSize: 135
+    m_FontSize: 120
     m_FontStyle: 1
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 1
     m_MaxSize: 186
     m_Alignment: 4
     m_AlignByGeometry: 0
